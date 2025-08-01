@@ -101,7 +101,7 @@ export default function Register() {
 
   return (
     <div className={styles.authContainer}>
-      <h1 className={styles.forumName}>Notebook</h1>
+      <h1 className="brandName">Vibes</h1>
       <div className={styles.authCard}>
         <h1>Create Account</h1>
         {error && <div className={styles.errorMessage}>{error}</div>}
@@ -235,7 +235,7 @@ export default function Register() {
         </form>
 
         <div className={styles.authLink}>
-          Already have an account? <Link href="/">Log In</Link>
+          Already have an account? <Link href="/">Sign In</Link>
         </div>
       </div>
     </div>

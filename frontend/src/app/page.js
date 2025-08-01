@@ -61,9 +61,9 @@ export default function Login() {
 
   return (
     <div className={styles.authContainer}>
-      <h1 className="forumName">Notebook</h1>
+      <h1 className="brandName">Vibes</h1>
       <div className={styles.authCard}>
-        <h1>Login to Notebook</h1>
+        <h1 id="auth-title">Login to Vibes</h1>
         {error && <p className={styles.error}>{error}</p>}
         <form className={styles.authForm} onSubmit={handleSubmit}>
           <input
@@ -80,7 +80,7 @@ export default function Login() {
           </button>
         </form>
         <p className={styles.authLink}>
-          New to Notebook? <Link href="/register">Create Account</Link>
+          New to Vibes? <Link href="/register">Create Account</Link>
         </p>
       </div>
     </div>

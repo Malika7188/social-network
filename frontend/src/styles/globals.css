@@ -1,32 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Facebook Colors */
-  --fb-blue: #1877f2;
-  --fb-green: #42b72a;
-  --fb-black: #050505;
-  --fb-grey: #65676b;
-  --fb-light-grey: #f0f2f5;
-  --fb-white: #ffffff;
-  --fb-red: #ff0000;
-  --fb-offline-grey: #a3a3a3;
+  /* Instagram Colors */
+  --ig-primary: #E4405F;
+  --ig-secondary: #833AB4;
+  --ig-tertiary: #F56040;
+  --ig-gradient: linear-gradient(45deg, #F56040, #E4405F, #833AB4);
+  --ig-black: #000000;
+  --ig-dark-grey: #262626;
+  --ig-grey: #8E8E8E;
+  --ig-light-grey: #FAFAFA;
+  --ig-white: #FFFFFF;
+  --ig-blue: #0095F6;
+  --ig-green: #00C851;
+  --ig-red: #ED4956;
+  --ig-border: #DBDBDB;
+  --ig-text-light: #8E8E8E;
   
   /* Semantic Colors */
-  --primary-color: var(--fb-blue);
-  --secondary-color: var(--fb-green);
-  --text-primary: var(--fb-black);
-  --text-secondary: var(--fb-grey);
-  --background-main: var(--fb-light-grey);
-  --background-card: var(--fb-white);
-  --border-color: #dddfe2;
-  --error-color: var(--fb-red);
+  --primary-color: var(--ig-primary);
+  --secondary-color: var(--ig-blue);
+  --text-primary: var(--ig-black);
+  --text-secondary: var(--ig-grey);
+  --background-main: var(--ig-light-grey);
+  --background-card: var(--ig-white);
+  --border-color: var(--ig-border);
+  --error-color: var(--ig-red);
+  --success-color: var(--ig-green);
 
   /* Typography */
-  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-brand: 'Inter', sans-serif;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
   --font-size-lg: 1.125rem;
   --font-size-xl: 1.25rem;
+  --font-size-xxl: 1.5rem;
 
   /* Spacing */
   --spacing-xs: 0.25rem;
@@ -34,16 +43,22 @@
   --spacing-md: 1rem;
   --spacing-lg: 1.5rem;
   --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
 
   /* Layout */
   --header-height: 80px;
   --header-height-mobile: 140px;
   --sidebar-width: 360px;
-  --border-radius: 8px;
-  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
+  --border-radius-sm: 8px;
+  --border-radius-lg: 16px;
+  --border-radius-full: 50%;
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --box-shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.15);
 
-  /* Add this to your existing variables */
-  --font-gummy: 'Sour Gummy', system-ui;
+  /* Instagram specific */
+  --ig-story-border: linear-gradient(45deg, #F56040, #E4405F, #833AB4);
+  --ig-button-gradient: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
 }
 
 /* Reset & Base Styles */
@@ -58,6 +73,9 @@ body {
   background-color: var(--background-main);
   color: var(--text-primary);
   line-height: 1.5;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Layout */
@@ -81,6 +99,11 @@ body {
 a {
   color: var(--primary-color);
   text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--ig-secondary);
 }
 
 button {
@@ -90,28 +113,54 @@ button {
   padding: var(--spacing-sm) var(--spacing-md);
   font-family: inherit;
   font-size: var(--font-size-lg);
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 .btn-primary {
-  background-color: var(--primary-color);
-  color: var(--fb-white);
+  background: var(--ig-button-gradient);
+  color: var(--ig-white);
+  border-radius: var(--border-radius-sm);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(228, 64, 95, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(228, 64, 95, 0.4);
 }
 
 .btn-secondary {
-  background-color: var(--secondary-color);
-  color: var(--fb-white);
+  background-color: var(--ig-blue);
+  color: var(--ig-white);
+  border-radius: var(--border-radius-sm);
+  font-weight: 600;
+}
+
+.btn-secondary:hover {
+  background-color: #0084E6;
+  transform: translateY(-1px);
 }
 
 .btn-tertiary {
-  background-color: var(--fb-green);
-  color: var(--fb-white);
+  background-color: transparent;
+  color: var(--ig-blue);
+  border: 1px solid var(--ig-blue);
+  border-radius: var(--border-radius-sm);
+  font-weight: 600;
+}
+
+.btn-tertiary:hover {
+  background-color: var(--ig-blue);
+  color: var(--ig-white);
+  transform: translateY(-1px);
 }
 
 /* Cards */
 .card {
   background-color: var(--background-card);
   border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
+  border: 1px solid var(--border-color);
   padding: var(--spacing-md);
   margin-bottom: var(--spacing-md);
 }
@@ -121,8 +170,16 @@ input, textarea {
   width: 100%;
   padding: var(--spacing-sm);
   border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-sm);
   font-family: inherit;
+  font-size: var(--font-size-base);
+  transition: border-color 0.2s ease;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--ig-blue);
+  box-shadow: 0 0 0 2px rgba(0, 149, 246, 0.2);
 }
 
 /* Utility Classes */
@@ -131,20 +188,44 @@ input, textarea {
 .text-secondary { color: var(--text-secondary); }
 .bg-white { background-color: var(--background-card); }
 
-/* Add this to your existing styles */
-.forumName {
-  font-family: var(--font-gummy);
-  font-size: 4rem;
-  color: var(--primary-color);
+/* Brand Name Styles */
+.brandName {
+  font-family: var(--font-brand);
+  font-size: 2rem;
+  font-weight: 700;
+  background: var(--ig-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   text-align: center;
   margin-bottom: var(--spacing-sm);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: -0.02em;
 }
 
-.headerForumName {
-  font-family: var(--font-gummy);
+.headerBrandName {
+  font-family: var(--font-brand);
   font-size: 2.5rem;
-  color: var(--primary-color);
+  font-weight: 700;
+  background: var(--ig-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   text-align: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: -0.02em;
+}
+
+/* Instagram-style gradients */
+.ig-gradient-bg {
+  background: var(--ig-gradient);
+}
+
+.ig-story-ring {
+  background: var(--ig-story-border);
+  padding: 2px;
+  border-radius: var(--border-radius-full);
+}
+
+.ig-story-ring img {
+  border: 2px solid var(--ig-white);
+  border-radius: var(--border-radius-full);
 }

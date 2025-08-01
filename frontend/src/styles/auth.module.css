@@ -5,8 +5,27 @@
   align-items: center;
   min-height: 100vh;
   padding-inline: var(--spacing-lg);
-  background-color: var(--background-main);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
 }
+
+.authContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--ig-gradient);
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.authContainer > * {
+  position: relative;
+  z-index: 1;
+}
+
 .fieldError {
   color: red;
   font-size: 0.875rem;
@@ -16,23 +35,26 @@
 
 .authCard {
   background-color: var(--background-card);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow-lg);
   width: 100%;
   max-width: 500px;
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
 }
 
 .authCard h1 {
   color: var(--text-primary);
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-xxl);
   margin-bottom: var(--spacing-sm);
   text-align: center;
+  font-weight: 600;
 }
 
 .authCard p {
   text-align: center;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--text-secondary);
 }
 
@@ -51,6 +73,7 @@
 .formGroup label {
   color: var(--text-secondary);
   font-size: var(--font-size-sm);
+  font-weight: 500;
 }
 
 .nameGroup {
@@ -63,8 +86,17 @@
 .authForm textarea {
   padding: var(--spacing-md);
   border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-sm);
   font-family: inherit;
+  font-size: var(--font-size-base);
+  transition: all 0.2s ease;
+}
+
+.authForm input:focus,
+.authForm textarea:focus {
+  border-color: var(--ig-blue);
+  box-shadow: 0 0 0 2px rgba(0, 149, 246, 0.2);
+  outline: none;
 }
 
 .authForm input[type="file"] {
@@ -78,9 +110,10 @@
 
 .authForm button {
   padding: var(--spacing-md);
-  border-radius: var(--border-radius);
-  font-weight: bold;
+  border-radius: var(--border-radius-sm);
+  font-weight: 600;
   margin-top: var(--spacing-md);
+  transition: all 0.2s ease;
 }
 
 .authLink {
@@ -90,21 +123,26 @@
 }
 
 .authLink a {
-  color: var(--primary-color);
-  font-weight: bold;
+  color: var(--ig-blue);
+  font-weight: 600;
+  transition: color 0.2s ease;
 }
 
-.forumName {
-  font-family: "Sour Gummy", serif;
+.authLink a:hover {
+  color: var(--ig-secondary);
 }
 
-h1.forumName {
-  font-family: var(--font-gummy);
+h1.brandName {
+  font-family: var(--font-brand);
   font-size: 4rem;
-  color: var(--primary-color);
+  font-weight: 700;
+  background: var(--ig-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   text-align: center;
   margin-bottom: var(--spacing-sm);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: -0.02em;
 }
 
 .passwordContainer {
@@ -124,16 +162,19 @@ h1.forumName {
   transform: translateY(-50%);
   background: none;
   border: none;
-  color: #666;
+  color: var(--text-secondary);
   cursor: pointer;
   padding: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: var(--border-radius-sm);
+  transition: all 0.2s ease;
 }
 
 .passwordToggle:hover {
-  color: #333;
+  color: var(--text-primary);
+  background-color: var(--background-main);
 }
 
 button.passwordToggle {
@@ -142,42 +183,50 @@ button.passwordToggle {
 
 .errorMessage {
   color: var(--error-color);
-  background-color: rgba(255, 0, 0, 0.1);
+  background-color: rgba(237, 73, 86, 0.1);
   padding: var(--spacing-sm);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-sm);
   margin-bottom: var(--spacing-md);
   text-align: center;
+  border: 1px solid rgba(237, 73, 86, 0.2);
 }
 
 .primaryButton {
-  background-color: var(--primary-color);
-  color: white;
+  background: var(--ig-button-gradient);
+  color: var(--ig-white);
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  border-radius: var(--border-radius-sm);
+  box-shadow: 0 2px 8px rgba(228, 64, 95, 0.3);
 }
 
 .primaryButton:hover {
-  background-color: #1464cf;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(228, 64, 95, 0.4);
 }
 
 .primaryButton:disabled {
-  background-color: #ccc;
+  background: var(--ig-grey);
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .avatarLabel {
   display: block;
   margin-bottom: 8px;
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 .fileInput {
   width: 100%;
   padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
 }
 
 .avatarPreview {
@@ -188,6 +237,8 @@ button.passwordToggle {
 .previewImage {
   max-width: 150px;
   max-height: 150px;
-  border-radius: 50%;
+  border-radius: var(--border-radius-full);
   object-fit: cover;
+  border: 3px solid var(--ig-white);
+  box-shadow: var(--box-shadow);
 }

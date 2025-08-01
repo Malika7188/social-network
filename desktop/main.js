@@ -94,7 +94,7 @@ function createTray() {
 
     const contextMenu = Menu.buildFromTemplate([
         {
-            label: 'Show NoteBook Messenger',
+            label: 'Show Vibes Messenger',
             click: () => {
                 mainWindow.show();
                 mainWindow.focus();
@@ -109,7 +109,7 @@ function createTray() {
         }
     ]);
 
-    tray.setToolTip('NoteBook Messenger');
+    tray.setToolTip('Vibes Messenger');
     tray.setContextMenu(contextMenu);
 
     // Show window on tray click
@@ -168,7 +168,7 @@ ipcMain.handle('store-delete', (event, key) => {
 ipcMain.handle('show-notification', (event, options) => {
     if (Notification.isSupported()) {
         const notification = new Notification({
-            title: options.title || 'NoteBook Messenger',
+            title: options.title || 'Vibes Messenger',
             body: options.body || '',
             icon: options.icon || path.join(__dirname, 'assets', 'icon.png'),
             sound: options.sound !== false

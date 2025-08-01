@@ -1,7 +1,7 @@
 {
-  "name": "notebook-messenger",
+  "name": "vibes-messenger",
   "version": "1.0.0",
-  "description": "Desktop messenger for social network",
+  "description": "Desktop messenger for Vibes social network",
   "main": "main.js",
   "scripts": {
     "dev": "electron .",
@@ -21,18 +21,18 @@
     "electron"
   ],
   "author": {
-    "name": "NoteBook Team",
-    "email": "team@notebook.app"
+    "name": "Vibes Team",
+    "email": "team@vibes.app"
   },
-  "homepage": "https://github.com/your-username/social-network",
+  "homepage": "https://github.com/your-username/vibes-social-network",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/social-network.git"
+    "url": "https://github.com/your-username/vibes-social-network.git"
   },
   "license": "ISC",
   "build": {
-    "appId": "com.notebook.messenger",
-    "productName": "NoteBook Messenger",
+    "appId": "com.vibes.messenger",
+    "productName": "Vibes Messenger",
     "directories": {
       "output": "dist",
       "buildResources": "build"
@@ -107,10 +107,10 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "NoteBook Messenger"
+      "shortcutName": "Vibes Messenger"
     },
     "dmg": {
-      "title": "NoteBook Messenger",
+      "title": "Vibes Messenger",
       "icon": "assets/icon.icns",
       "background": "assets/dmg-background.png",
       "contents": [
@@ -129,7 +129,7 @@
     "publish": {
       "provider": "github",
       "owner": "your-github-username",
-      "repo": "social-network"
+      "repo": "vibes-social-network"
     }
   },
   "dependencies": {

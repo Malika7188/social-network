@@ -1,6 +1,6 @@
-# NoteBook Messenger Desktop App
+# Vibes Messenger Desktop App
 
-A cross-platform desktop application for the NoteBook social network, built with Electron.
+A cross-platform desktop application for the Vibes social network, built with Electron.
 
 ## 🚀 Quick Start
 
@@ -17,7 +17,7 @@ A cross-platform desktop application for the NoteBook social network, built with
 ```bash
 # Clone and install
 git clone <your-repo>
-cd social-network/desktop
+cd vibes-social-network/desktop
 npm install
 ```
 

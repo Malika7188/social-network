@@ -17,12 +17,13 @@
     align-items: center;
     gap: var(--spacing-sm);
     padding: var(--spacing-md);
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-lg);
     box-shadow: var(--box-shadow-lg);
     background-color: var(--background-card);
     border-left: 4px solid;
     animation: toastSlideIn 0.3s ease;
     transition: var(--transition-normal);
+    backdrop-filter: blur(10px);
 }
 
 .toast.removing {
@@ -74,6 +75,7 @@
     flex: 1;
     font-size: var(--font-size-sm);
     color: var(--text-primary);
+    font-weight: 500;
 }
 
 .toast-close {
@@ -89,6 +91,7 @@
 .toast-close:hover {
     background-color: var(--background-hover);
     color: var(--text-primary);
+    transform: scale(1.1);
 }
 
 @keyframes toastSlideIn {
@@ -125,10 +128,19 @@
     border-bottom: 1px solid var(--border-color);
     height: 60px;
     z-index: 100;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95);
 }
 
-.header-left .forum-name {
+.header-left .brand-name {
+    font-family: var(--font-brand);
     font-size: var(--font-size-xl);
+    font-weight: 700;
+    background: var(--ig-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
     margin: 0;
 }
 
@@ -178,6 +190,7 @@
 .header-btn:hover {
     background-color: var(--background-hover);
     color: var(--text-primary);
+    transform: scale(1.05);
 }
 
 /* Messenger Content Layout */
@@ -220,7 +233,7 @@
 .search-input {
     width: 100%;
     padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: 20px;
+    border-radius: var(--border-radius-lg);
     border: 1px solid var(--border-color);
     background-color: var(--background-hover);
     font-size: var(--font-size-sm);
@@ -243,6 +256,7 @@
 
 .conversation-item:hover {
     background-color: var(--background-hover);
+    transform: translateX(2px);
 }
 
 .conversation-item.selected {
@@ -250,7 +264,7 @@
 }
 
 .conversation-item.unread {
-    background-color: rgba(24, 119, 242, 0.05);
+    background-color: rgba(228, 64, 95, 0.05);
 }
 
 .conversation-item .avatar-container {
@@ -271,7 +285,7 @@
 .preview-content h4 {
     margin: 0 0 4px 0;
     font-size: var(--font-size-md);
-    font-weight: 500;
+    font-weight: 600;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -292,7 +306,7 @@
 }
 
 .bold-preview {
-    font-weight: 500;
+    font-weight: 600;
     color: var(--text-primary);
 }
 
@@ -310,8 +324,8 @@
 }
 
 .bold-timestamp {
-    font-weight: 500;
-    color: var(--primary-color);
+    font-weight: 600;
+    color: var(--secondary-color);
 }
 
 .unread-badge {
@@ -357,6 +371,7 @@
 .no-chat-content h2 {
     margin-bottom: var(--spacing-sm);
     color: var(--text-primary);
+    font-weight: 600;
 }
 
 .no-chat-content p {
@@ -380,6 +395,8 @@
     border-bottom: 1px solid var(--border-color);
     background-color: var(--background-card);
     height: 60px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95);
 }
 
 .back-button {
@@ -391,6 +408,13 @@
     margin-right: var(--spacing-sm);
     color: var(--text-primary);
     font-size: var(--font-size-lg);
+    border-radius: var(--border-radius-full);
+    transition: var(--transition-fast);
+}
+
+.back-button:hover {
+    background-color: var(--background-hover);
+    transform: scale(1.1);
 }
 
 .chat-user-info {
@@ -417,6 +441,7 @@
 .user-status {
     font-size: var(--font-size-sm);
     color: var(--text-secondary);
+    font-weight: 500;
 }
 
 /* Messages Area */
@@ -464,22 +489,22 @@
 
 .message-text {
     padding: 10px 14px;
-    border-radius: 18px;
+    border-radius: var(--border-radius-lg);
     font-size: var(--font-size-sm);
     word-break: break-word;
     line-height: 1.4;
 }
 
 .sent .message-text {
-    background-color: var(--primary-color);
+    background: var(--ig-gradient);
     color: var(--text-white);
-    border-top-right-radius: 4px;
+    border-top-right-radius: var(--border-radius-sm);
 }
 
 .received .message-text {
     background-color: var(--background-card);
     color: var(--text-primary);
-    border-top-left-radius: 4px;
+    border-top-left-radius: var(--border-radius-sm);
     border: 1px solid var(--border-color);
 }
 
@@ -511,7 +536,7 @@
     gap: 4px;
     padding: 8px 12px;
     background-color: var(--background-card);
-    border-radius: 18px;
+    border-radius: var(--border-radius-lg);
     border: 1px solid var(--border-color);
 }
 
@@ -571,12 +596,13 @@
 
 .emoji-button:hover {
     background-color: var(--background-hover);
+    transform: scale(1.1);
 }
 
 .message-input {
     flex: 1;
     padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: 24px;
+    border-radius: var(--border-radius-lg);
     border: 1px solid var(--border-color);
     background-color: var(--background-hover);
     font-size: var(--font-size-md);
@@ -586,6 +612,8 @@
 
 .message-input:focus {
     background-color: var(--background-card);
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(0, 149, 246, 0.2);
 }
 
 .send-button {
@@ -593,7 +621,7 @@
     border: none;
     cursor: pointer;
     padding: var(--spacing-sm);
-    color: var(--primary-color);
+    color: var(--secondary-color);
     border-radius: var(--border-radius-full);
     transition: var(--transition-fast);
     width: 36px;
@@ -619,7 +647,7 @@
     bottom: 80px;
     left: var(--spacing-md);
     background-color: var(--background-card);
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-lg);
     box-shadow: var(--box-shadow-lg);
     width: 320px;
     max-height: 300px;
@@ -655,6 +683,7 @@
 
 .close-emoji-picker:hover {
     background-color: var(--background-hover);
+    transform: scale(1.1);
 }
 
 .category-tabs {
@@ -712,13 +741,14 @@
     align-items: center;
     padding: var(--spacing-sm) var(--spacing-md);
     cursor: pointer;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-sm);
     transition: var(--transition-fast);
     margin-bottom: var(--spacing-xs);
 }
 
 .contact-item:hover {
     background-color: var(--background-hover);
+    transform: translateX(2px);
 }
 
 .contact-avatar {
@@ -765,7 +795,7 @@
 .search-people {
     width: 100%;
     padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-sm);
     border: 1px solid var(--border-color);
     margin-bottom: var(--spacing-md);
     font-size: var(--font-size-md);
@@ -843,6 +873,7 @@
 .password-toggle:hover {
     color: var(--text-primary);
     background-color: var(--background-hover);
+    transform: translateY(-50%) scale(1.1);
 }
 
 /* Responsive Design */

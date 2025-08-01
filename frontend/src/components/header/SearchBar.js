@@ -17,7 +17,7 @@ export default function SearchBar() {
         <i className="fas fa-search"></i>
         <input
           type="text"
-          placeholder="Search Notebook"
+          placeholder="Search Vibes"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className={styles.searchInput}

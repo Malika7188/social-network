@@ -2,27 +2,27 @@
 
 :root {
     /* Colors */
-    --primary-color: #1877f2;
-    --secondary-color: #42b72a;
-    --error-color: #e74c3c;
-    --warning-color: #f39c12;
-    --success-color: #27ae60;
+    --primary-color: #E4405F;
+    --secondary-color: #0095F6;
+    --error-color: #ED4956;
+    --warning-color: #FFDC00;
+    --success-color: #00C851;
 
     /* Background colors */
-    --background-main: #f0f2f5;
+    --background-main: #FAFAFA;
     --background-card: #ffffff;
     --background-hover: rgba(0, 0, 0, 0.05);
-    --background-selected: rgba(24, 119, 242, 0.1);
+    --background-selected: rgba(228, 64, 95, 0.1);
 
     /* Text colors */
-    --text-primary: #1c1e21;
-    --text-secondary: #65676b;
-    --text-muted: #8a8d91;
+    --text-primary: #000000;
+    --text-secondary: #8E8E8E;
+    --text-muted: #C7C7C7;
     --text-white: #ffffff;
 
     /* Border colors */
-    --border-color: #e4e6ea;
-    --border-hover: #dadde1;
+    --border-color: #DBDBDB;
+    --border-hover: #C7C7C7;
 
     /* Spacing */
     --spacing-xs: 4px;
@@ -40,17 +40,17 @@
     --font-size-xxl: 32px;
 
     /* Fonts */
-    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    --font-gummy: 'Sour Gummy', cursive;
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-brand: 'Inter', sans-serif;
 
     /* Shadows */
-    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    --box-shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+    --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --box-shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.15);
 
     /* Border radius */
-    --border-radius: 8px;
-    --border-radius-sm: 4px;
-    --border-radius-lg: 12px;
+    --border-radius: 12px;
+    --border-radius-sm: 8px;
+    --border-radius-lg: 16px;
     --border-radius-full: 50%;
 
     /* Transitions */
@@ -60,6 +60,10 @@
 
     /* Sidebar */
     --sidebar-width: 360px;
+
+    /* Instagram gradients */
+    --ig-gradient: linear-gradient(45deg, #F56040, #E4405F, #833AB4);
+    --ig-story-border: linear-gradient(45deg, #F56040, #E4405F, #833AB4);
 }
 
 /* Reset and base styles */
@@ -78,6 +82,9 @@ body {
     color: var(--text-primary);
     background-color: var(--background-main);
     overflow: hidden;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -97,7 +104,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+    border-radius: var(--border-radius-sm);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -115,27 +122,28 @@ body {
     padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: var(--border-radius-sm);
     font-size: var(--font-size-xs);
-    font-weight: 500;
+    font-weight: 600;
     z-index: 1000;
     transition: var(--transition-normal);
+    backdrop-filter: blur(10px);
 }
 
 .network-status.online {
-    background-color: rgba(39, 174, 96, 0.1);
+    background-color: rgba(0, 200, 81, 0.1);
     color: var(--success-color);
-    border: 1px solid rgba(39, 174, 96, 0.2);
+    border: 1px solid rgba(0, 200, 81, 0.2);
 }
 
 .network-status.offline {
-    background-color: rgba(231, 76, 60, 0.1);
+    background-color: rgba(237, 73, 86, 0.1);
     color: var(--error-color);
-    border: 1px solid rgba(231, 76, 60, 0.2);
+    border: 1px solid rgba(237, 73, 86, 0.2);
 }
 
 .network-status.connecting {
-    background-color: rgba(255, 193, 7, 0.1);
+    background-color: rgba(255, 220, 0, 0.1);
     color: var(--warning-color);
-    border: 1px solid rgba(255, 193, 7, 0.2);
+    border: 1px solid rgba(255, 220, 0, 0.2);
 }
 
 .network-status.connecting i {
@@ -143,9 +151,9 @@ body {
 }
 
 .network-status.server-down {
-    background-color: rgba(255, 152, 0, 0.1);
-    color: #ff9800;
-    border: 1px solid rgba(255, 152, 0, 0.2);
+    background-color: rgba(255, 220, 0, 0.1);
+    color: var(--warning-color);
+    border: 1px solid rgba(255, 220, 0, 0.2);
 }
 
 .network-status.server-down i {
@@ -170,17 +178,22 @@ body {
     text-align: center;
 }
 
-.loading-content .forum-name {
-    font-family: var(--font-gummy);
+.loading-content .brand-name {
+    font-family: var(--font-brand);
     font-size: var(--font-size-xxl);
-    color: var(--primary-color);
+    font-weight: 700;
+    background: var(--ig-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: var(--spacing-lg);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: -0.02em;
 }
 
 .loading-content p {
     color: var(--text-secondary);
     margin-top: var(--spacing-md);
+    font-weight: 500;
 }
 
 /* App Container */
@@ -201,7 +214,7 @@ body {
     gap: var(--spacing-xs);
     padding: var(--spacing-sm) var(--spacing-md);
     border: none;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-sm);
     font-size: var(--font-size-md);
     font-weight: 600;
     text-decoration: none;
@@ -211,33 +224,34 @@ body {
 }
 
 .btn-primary {
-    background-color: var(--primary-color);
+    background: var(--ig-gradient);
     color: var(--text-white);
+    box-shadow: 0 2px 8px rgba(228, 64, 95, 0.3);
 }
 
 .btn-primary:hover:not(:disabled) {
-    background-color: #1464cf;
     transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(228, 64, 95, 0.4);
 }
 
 .btn-secondary {
-    background-color: var(--secondary-color);
+    background-color: var(--ig-blue);
     color: var(--text-white);
 }
 
 .btn-secondary:hover:not(:disabled) {
-    background-color: #369e1f;
+    background-color: #0084E6;
     transform: translateY(-1px);
 }
 
 .btn-tertiary {
     background-color: var(--background-card);
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
 }
 
 .btn-tertiary:hover:not(:disabled) {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     color: var(--text-white);
     transform: translateY(-1px);
 }
@@ -245,10 +259,11 @@ body {
 .btn-primary:disabled,
 .btn-secondary:disabled,
 .btn-tertiary:disabled {
-    background-color: #ccc;
-    color: #999;
+    background-color: var(--text-muted);
+    color: var(--text-secondary);
     cursor: not-allowed;
     transform: none;
+    box-shadow: none;
 }
 
 /* Spinner component */
@@ -265,7 +280,7 @@ body {
     width: 10px;
     height: 10px;
     background-color: var(--primary-color);
-    border-radius: 100%;
+    border-radius: var(--border-radius-full);
     animation: bounce 1.4s infinite ease-in-out both;
 }
 
@@ -323,7 +338,7 @@ textarea {
     width: 100%;
     padding: var(--spacing-sm) var(--spacing-md);
     border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-sm);
     font-family: inherit;
     font-size: var(--font-size-md);
     background-color: var(--background-card);
@@ -336,14 +351,14 @@ input[type="email"]:focus,
 input[type="password"]:focus,
 textarea:focus {
     outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(0, 149, 246, 0.2);
 }
 
 input.error,
 textarea.error {
     border-color: var(--error-color);
-    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+    box-shadow: 0 0 0 2px rgba(237, 73, 86, 0.2);
 }
 
 .field-error {
@@ -395,6 +410,7 @@ textarea.error {
     justify-content: center;
     align-items: center;
     z-index: 2000;
+    backdrop-filter: blur(4px);
 }
 
 .modal-content {
@@ -406,6 +422,7 @@ textarea.error {
     overflow: hidden;
     box-shadow: var(--box-shadow-lg);
     animation: modalSlideIn 0.3s ease;
+    border: 1px solid var(--border-color);
 }
 
 @keyframes modalSlideIn {
@@ -445,8 +462,9 @@ textarea.error {
 }
 
 .close-button:hover {
-    background-color: var(--background-hover);
+    background-color: rgba(0, 0, 0, 0.05);
     color: var(--text-primary);
+    transform: scale(1.1);
 }
 
 .modal-body {
@@ -519,14 +537,18 @@ textarea.error {
     color: var(--text-secondary);
 }
 
-/* Forum name styling */
-.forum-name {
-    font-family: var(--font-gummy);
-    color: var(--primary-color);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+/* Brand name styling */
+.brand-name {
+    font-family: var(--font-brand);
+    font-weight: 700;
+    background: var(--ig-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
 }
 
-h1.forum-name {
+h1.brand-name {
     font-size: 4rem;
     text-align: center;
     margin-bottom: var(--spacing-sm);
@@ -543,7 +565,7 @@ h1.forum-name {
         max-width: calc(100% - 2rem);
     }
 
-    h1.forum-name {
+    h1.brand-name {
         font-size: 3rem;
     }
 }
@@ -554,7 +576,7 @@ h1.forum-name {
         --spacing-lg: 16px;
     }
 
-    h1.forum-name {
+    h1.brand-name {
         font-size: 2.5rem;
     }
 }
@@ -570,14 +592,15 @@ h1.forum-name {
     width: 80%;
     padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm) 40px;
     border: 1px solid var(--border-color);
-    border-radius: 20px;
+    border-radius: var(--border-radius-lg);
     background-color: var(--background-hover);
     font-size: var(--font-size-sm);
     transition: border-color 0.2s;
 }
 
 .global-search:focus {
-    border-color: var(--primary-color);
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(0, 149, 246, 0.2);
 }
 
 .search-icon {
@@ -585,7 +608,7 @@ h1.forum-name {
     right: 12px;
     top: 50%;
     transform: translateY(-50%);
-    color: #666;
+    color: var(--text-secondary);
     pointer-events: none;
 }
 
@@ -595,10 +618,10 @@ h1.forum-name {
     top: 100%;
     left: 0;
     right: 0;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: var(--background-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--box-shadow-lg);
     max-height: 300px;
     overflow-y: auto;
     z-index: 1000;
@@ -607,13 +630,13 @@ h1.forum-name {
 
 .search-result-item {
     padding: 12px 16px;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid var(--border-color);
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
 .search-result-item:hover {
-    background-color: #f8f9fa;
+    background-color: var(--background-hover);
 }
 
 .search-result-item:last-child {
@@ -622,34 +645,34 @@ h1.forum-name {
 
 .search-result-contact {
     font-weight: 600;
-    color: #333;
+    color: var(--text-primary);
     font-size: 14px;
     margin-bottom: 4px;
 }
 
 .search-result-content {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 13px;
     line-height: 1.4;
     margin-bottom: 4px;
 }
 
 .search-result-content mark {
-    background-color: #fff3cd;
-    color: #856404;
+    background-color: rgba(228, 64, 95, 0.2);
+    color: var(--primary-color);
     padding: 1px 2px;
-    border-radius: 2px;
+    border-radius: var(--border-radius-sm);
 }
 
 .search-result-time {
-    color: #999;
+    color: var(--text-muted);
     font-size: 11px;
 }
 
 .no-results {
     padding: 16px;
     text-align: center;
-    color: #666;
+    color: var(--text-secondary);
     font-style: italic;
 }
 
@@ -674,19 +697,19 @@ h1.forum-name {
 
 /* Highlighted message animation */
 .highlighted-message {
-    background-color: rgba(255, 235, 59, 0.3) !important;
-    border-left: 4px solid #ffc107 !important;
+    background-color: rgba(228, 64, 95, 0.1) !important;
+    border-left: 4px solid var(--primary-color) !important;
     animation: highlightFade 3s ease-out;
 }
 
 @keyframes highlightFade {
     0% {
-        background-color: rgba(255, 235, 59, 0.6);
+        background-color: rgba(228, 64, 95, 0.3);
         transform: scale(1.02);
     }
 
     100% {
-        background-color: rgba(255, 235, 59, 0.1);
+        background-color: rgba(228, 64, 95, 0.05);
         transform: scale(1);
     }
 }
@@ -706,16 +729,16 @@ h1.forum-name {
     left: 50%;
     transform: translate(-50%, -50%);
     background: rgba(0, 0, 0, 0.8);
-    color: white;
+    color: var(--text-white);
     padding: 10px 20px;
-    border-radius: 4px;
+    border-radius: var(--border-radius-sm);
     font-size: 14px;
     z-index: 1000;
 }
 
 /* Message input disabled state */
 #message-input:disabled {
-    background-color: #f8f9fa;
-    color: #6c757d;
+    background-color: var(--background-hover);
+    color: var(--text-secondary);
     cursor: not-allowed;
 }

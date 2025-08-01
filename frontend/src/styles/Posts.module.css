@@ -1,8 +1,8 @@
 .createPostCard {
   background-color: var(--background-card);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-lg);
   padding: var(--spacing-md);
-  box-shadow: var(--box-shadow);
+  border: 1px solid var(--border-color);
   margin-bottom: var(--spacing-md);
 }
 
@@ -16,8 +16,11 @@
 .profilePic {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: var(--border-radius-full);
   object-fit: cover;
+  border: 2px solid transparent;
+  background: var(--ig-story-border);
+  padding: 2px;
 }
 
 .createPostInput {
@@ -30,9 +33,14 @@
   padding: var(--spacing-md);
   border: none;
   background-color: var(--background-main);
-  border-radius: 20px;
+  border-radius: var(--border-radius-lg);
   font-size: var(--font-size-base);
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.createPostInput input:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .createPostInput input:focus {
@@ -48,7 +56,7 @@
   min-height: 100px;
   padding: var(--spacing-md);
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-sm);
   background-color: var(--background-main);
   font-size: var(--font-size-base);
   resize: none;
@@ -67,19 +75,21 @@
 }
 
 .postButton {
-  background-color: var(--primary-color);
-  color: white;
+  background: var(--ig-button-gradient);
+  color: var(--ig-white);
   padding: var(--spacing-sm) var(--spacing-xl);
-  border-radius: 6px;
+  border-radius: var(--border-radius-sm);
   font-weight: 600;
   font-size: var(--font-size-base);
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(228, 64, 95, 0.3);
 }
 
 .postButton:hover {
-  background-color: #1668d9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(228, 64, 95, 0.4);
 }
 
 .createPostFooter {
@@ -96,17 +106,19 @@
   padding: var(--spacing-sm) var(--spacing-md);
   border: none;
   background: none;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-sm);
   color: var(--text-secondary);
   font-size: var(--font-size-base);
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
   flex: 1;
   justify-content: center;
+  font-weight: 500;
 }
 
 .mediaButton:hover {
-  background-color: var(--background-main);
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
 }
 
 .mediaButton i {
@@ -114,15 +126,15 @@
 }
 
 .mediaButton:nth-child(1) i {
-  color: #f02849;
+  color: var(--ig-red);
 }
 
 .mediaButton:nth-child(2) i {
-  color: #45bd62;
+  color: var(--ig-green);
 }
 
 .mediaButton:nth-child(3) i {
-  color: #f7b928;
+  color: #FFDC00;
 }
 
 .modalOverlay {
@@ -136,16 +148,18 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  backdrop-filter: blur(4px);
 }
 
 .modal {
   background-color: var(--background-card);
-  border-radius: 8px;
+  border-radius: var(--border-radius-lg);
   width: 100%;
   max-width: 500px;
   max-height: 90vh;
   overflow-y: auto;
   animation: slideUp 0.3s ease-out;
+  border: 1px solid var(--border-color);
 }
 
 @keyframes slideUp {
@@ -182,13 +196,14 @@
   font-size: 1.5rem;
   cursor: pointer;
   padding: var(--spacing-sm);
-  border-radius: 50%;
+  border-radius: var(--border-radius-full);
   color: var(--text-secondary);
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
 }
 
 .closeButton:hover {
-  background-color: var(--background-main);
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: scale(1.1);
 }
 
 .modalContent {
@@ -218,10 +233,15 @@
   background-color: var(--background-main);
   border: none;
   padding: 4px 8px;
-  border-radius: 6px;
+  border-radius: var(--border-radius-sm);
   font-size: var(--font-size-sm);
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.privacyButton:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .privacyDropdown {
@@ -230,11 +250,12 @@
   left: 0;
   width: 200px;
   background-color: var(--background-card);
-  border-radius: 8px;
-  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow-lg);
   z-index: 10;
   margin-top: 4px;
   overflow: hidden;
+  border: 1px solid var(--border-color);
 }
 
 .privacyOption {
@@ -243,15 +264,15 @@
   gap: 10px;
   padding: 10px 12px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
 }
 
 .privacyOption:hover {
-  background-color: var(--background-main);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .privacyOption.selected {
-  background-color: rgba(0, 123, 255, 0.1);
+  background-color: rgba(228, 64, 95, 0.1);
 }
 
 .privacyOption i {
@@ -290,7 +311,7 @@
 .previewItem {
   position: relative;
   aspect-ratio: 16/9;
-  border-radius: 8px;
+  border-radius: var(--border-radius-lg);
   overflow: hidden;
 }
 
@@ -308,20 +329,21 @@
   background: rgba(0, 0, 0, 0.6);
   color: white;
   border: none;
-  border-radius: 50%;
+  border-radius: var(--border-radius-full);
   width: 28px;
   height: 28px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
 }
 
 .removePreview:hover {
   background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
 }
 
 .addToPost {
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--border-radius-lg);
   padding: var(--spacing-md);
   margin-bottom: var(--spacing-md);
 }
@@ -329,6 +351,7 @@
 .addToPost h4 {
   margin-bottom: var(--spacing-sm);
   color: var(--text-secondary);
+  font-weight: 600;
 }
 
 .mediaButtons {
@@ -343,42 +366,46 @@
   font-size: 1.5rem;
   cursor: pointer;
   padding: var(--spacing-sm);
-  border-radius: 50%;
-  transition: background-color 0.2s;
+  border-radius: var(--border-radius-full);
+  transition: all 0.2s ease;
 }
 
 .mediaButtons button:hover,
 .mediaLabel:hover {
-  background-color: var(--background-main);
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: scale(1.1);
 }
 
 .postButton {
   width: 100%;
-  background-color: var(--primary-color);
-  color: white;
+  background: var(--ig-button-gradient);
+  color: var(--ig-white);
   border: none;
   padding: var(--spacing-md);
-  border-radius: 6px;
+  border-radius: var(--border-radius-sm);
   font-weight: 600;
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(228, 64, 95, 0.3);
 }
 
 .postButton:disabled {
-  opacity: 0.6;
+  background: var(--ig-grey);
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 .postButton:not(:disabled):hover {
-  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(228, 64, 95, 0.4);
 }
 
 /* Post section */
 
 .post {
   background-color: var(--background-card);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border-color);
   margin-bottom: var(--spacing-md);
   overflow: hidden;
 }
@@ -399,8 +426,17 @@
 .authorAvatar {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: var(--border-radius-full);
   object-fit: cover;
+  border: 2px solid transparent;
+  background: var(--ig-story-border);
+  padding: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.authorAvatar:hover {
+  transform: scale(1.05);
 }
 
 .authorInfo h3 {
@@ -408,6 +444,12 @@
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 2px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.authorInfo h3:hover {
+  color: var(--ig-blue);
 }
 
 .postMeta {
@@ -432,13 +474,14 @@
   top: 100%;
   right: 0;
   background-color: var(--background-card);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow-lg);
   min-width: 200px;
   z-index: 1000;
   padding: var(--spacing-xs);
   margin-top: var(--spacing-xs);
   animation: fadeIn 0.2s ease-out;
+  border: 1px solid var(--border-color);
 }
 
 @keyframes fadeIn {
@@ -464,12 +507,14 @@
   font-size: var(--font-size-base);
   text-align: left;
   cursor: pointer;
-  border-radius: var(--border-radius);
-  transition: background-color 0.2s;
+  border-radius: var(--border-radius-sm);
+  transition: all 0.2s ease;
+  font-weight: 500;
 }
 
 .optionsDropdown button:hover {
-  background-color: var(--background-main);
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: translateX(2px);
 }
 
 .optionsDropdown i {
@@ -487,19 +532,21 @@
   background: none;
   border: none;
   padding: var(--spacing-sm);
-  border-radius: 50%;
+  border-radius: var(--border-radius-full);
   color: var(--text-secondary);
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
 }
 
 .postOptions:hover {
-  background-color: var(--background-main);
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: scale(1.1);
 }
 
 .postContent {
   padding: 0 var(--spacing-md) var(--spacing-md);
   color: var(--text-primary);
+  line-height: 1.6;
 }
 
 .postMedia {
@@ -520,6 +567,7 @@
   border-bottom: 1px solid var(--border-color);
   color: var(--text-secondary);
   font-size: var(--font-size-sm);
+  font-weight: 500;
 }
 
 .reactions {
@@ -555,17 +603,28 @@
   border: none;
   color: var(--text-secondary);
   font-weight: 600;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-sm);
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
 }
 
 .actionButton:hover {
-  background-color: var(--background-main);
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
 }
 
 .actionButton.liked {
-  color: var(--primary-color);
+  color: var(--ig-red);
+}
+
+.actionButton.liked i {
+  animation: heartBeat 0.3s ease;
+}
+
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
 
 .commentsSection {
@@ -582,7 +641,7 @@
 .commentAvatar {
   width: 32px;
   height: 32px;
-  border-radius: 50%;
+  border-radius: var(--border-radius-full);
   object-fit: cover;
 }
 
@@ -591,8 +650,15 @@
   display: flex;
   align-items: center;
   background-color: var(--background-main);
-  border-radius: 20px;
+  border-radius: var(--border-radius-lg);
   padding: 8px var(--spacing-md);
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.commentInput:focus-within {
+  border-color: var(--border-color);
+  background-color: var(--background-card);
 }
 
 .commentInput input {
@@ -607,15 +673,16 @@
 .commentInput button {
   background: none;
   border: none;
-  color: var(--primary-color);
+  color: var(--ig-blue);
   cursor: pointer;
   padding: var(--spacing-xs);
   opacity: 0.7;
-  transition: opacity 0.2s;
+  transition: all 0.2s ease;
 }
 
 .commentInput button:hover:not(:disabled) {
   opacity: 1;
+  transform: scale(1.1);
 }
 
 .commentInput button:disabled {
@@ -635,7 +702,7 @@
 
 .commentBubble {
   background-color: var(--background-main);
-  border-radius: 18px;
+  border-radius: var(--border-radius-lg);
   padding: var(--spacing-sm) var(--spacing-md);
   margin-bottom: 4px;
 }
@@ -661,10 +728,11 @@
   cursor: pointer;
   padding: 0;
   font-size: var(--font-size-sm);
+  transition: color 0.2s ease;
 }
 
 .commentActions button:hover {
-  text-decoration: underline;
+  color: var(--text-primary);
 }
 
 .commentActions span {
@@ -678,12 +746,13 @@
   cursor: pointer;
   color: var(--text-secondary);
   padding: var(--spacing-sm);
-  border-radius: 50%;
-  transition: background-color 0.2s;
+  border-radius: var(--border-radius-full);
+  transition: all 0.2s ease;
 }
 
 .backButton:hover {
-  background-color: var(--background-main);
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: scale(1.1);
 }
 
 .settingsSection {
@@ -712,23 +781,23 @@
   width: 100%;
   padding: 16px;
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--border-radius-lg);
   cursor: pointer;
   transition: all 0.2s ease;
   background-color: var(--background-card);
 }
 
 .radioLabel:hover {
-  background-color: var(--background-main);
+  background-color: rgba(0, 0, 0, 0.02);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--box-shadow);
 }
 
 .selectedPrivacy {
-  border-color: var(--primary-color);
-  background-color: rgba(0, 123, 255, 0.05);
+  border-color: var(--ig-blue);
+  background-color: rgba(0, 149, 246, 0.05);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--box-shadow);
 }
 
 .radioIcon {
@@ -755,7 +824,7 @@
 }
 
 .selectedPrivacy .radioIcon i {
-  color: var(--primary-color);
+  color: var(--ig-blue);
   transform: scale(1.2);
 }
 
@@ -794,20 +863,21 @@
   width: 100%;
   padding: 10px 10px 10px 36px;
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--border-radius-sm);
   font-size: var(--font-size-base);
 }
 
 .searchInput:focus {
   outline: none;
-  border-color: var(--primary-color);
+  border-color: var(--ig-blue);
+  box-shadow: 0 0 0 2px rgba(0, 149, 246, 0.2);
 }
 
 .followersList {
   max-height: 300px;
   overflow-y: auto;
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--border-radius-lg);
 }
 
 .followerItem {
@@ -825,12 +895,12 @@
 }
 
 .followerItem:hover {
-  background-color: var(--background-main);
+  background-color: rgba(0, 0, 0, 0.02);
   transform: translateX(5px);
 }
 
 .followerItem.selected {
-  background-color: rgba(0, 123, 255, 0.1);
+  background-color: rgba(0, 149, 246, 0.1);
 }
 
 .followerInfo {
@@ -842,12 +912,12 @@
 .followerInfo img {
   width: 36px;
   height: 36px;
-  border-radius: 50%;
+  border-radius: var(--border-radius-full);
   object-fit: cover;
 }
 
 .checkboxContainer {
-  color: var(--primary-color);
+  color: var(--ig-blue);
   font-size: 1.2rem;
   transition: transform 0.2s ease;
 }
@@ -869,28 +939,27 @@
 }
 
 .saveSettingsButton {
-  background-color: var(--primary-color);
-  color: white;
+  background: var(--ig-button-gradient);
+  color: var(--ig-white);
   border: none;
-  border-radius: 6px;
+  border-radius: var(--border-radius-sm);
   padding: 12px 16px;
   font-weight: 600;
   cursor: pointer;
   width: 100%;
   margin-top: var(--spacing-md);
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(228, 64, 95, 0.3);
 }
 
 .saveSettingsButton:hover {
-  background-color: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(228, 64, 95, 0.4);
 }
 
 .saveSettingsButton:active {
   transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(228, 64, 95, 0.3);
 }
 
 .settingsModal {
@@ -910,7 +979,7 @@
 
 .emptyState, .errorState, .loadingState {
   background-color: var(--background-card);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-lg);
   padding: var(--spacing-xl);
   margin-bottom: var(--spacing-md);
   text-align: center;
@@ -918,6 +987,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-md);
+  border: 1px solid var(--border-color);
 }
 
 .emptyState i, .errorState i {
@@ -936,24 +1006,26 @@
 }
 
 .retryButton {
-  background-color: var(--primary-color);
-  color: white;
+  background: var(--ig-button-gradient);
+  color: var(--ig-white);
   border: none;
   padding: var(--spacing-sm) var(--spacing-xl);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-sm);
   font-weight: 600;
   cursor: pointer;
   margin-top: var(--spacing-md);
+  transition: all 0.2s ease;
 }
 
 .retryButton:hover {
-  background-color: #1668d9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(228, 64, 95, 0.4);
 }
 
 .spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-  border-top: 4px solid var(--primary-color);
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius-full);
+  border-top: 3px solid var(--ig-primary);
   width: 30px;
   height: 30px;
   animation: spin 1s linear infinite;
@@ -987,9 +1059,14 @@
 }
 
 .commentImageLabel {
-  color: var(--primary-color);
+  color: var(--ig-blue);
   cursor: pointer;
   padding: 0 var(--spacing-sm);
+  transition: all 0.2s ease;
+}
+
+.commentImageLabel:hover {
+  transform: scale(1.1);
 }
 
 .commentImagePreview {
@@ -1000,7 +1077,7 @@
 
 .commentImagePreview img {
   width: 100%;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-lg);
 }
 
 .removeCommentImage {
@@ -1009,14 +1086,20 @@
   right: -8px;
   background-color: var(--background-card);
   border: none;
-  border-radius: 50%;
+  border-radius: var(--border-radius-full);
   width: 24px;
   height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--box-shadow);
+  transition: all 0.2s ease;
+}
+
+.removeCommentImage:hover {
+  transform: scale(1.1);
+  box-shadow: var(--box-shadow-lg);
 }
 
 .commentImage {
@@ -1026,7 +1109,7 @@
 .commentImage img {
   max-width: 100%;
   max-height: 200px;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-lg);
 }
 
 .videoContent {
@@ -1058,10 +1141,11 @@
 .cancelBtn, 
 .deleteBtn {
   padding: var(--spacing-sm) var(--spacing-lg);
-  border-radius: 6px;
+  border-radius: var(--border-radius-sm);
   font-weight: 500;
   cursor: pointer;
   border: none;
+  transition: all 0.2s ease;
 }
 
 .cancelBtn {
@@ -1071,40 +1155,41 @@
 }
 
 .cancelBtn:hover {
-  background-color: var(--background-main);
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
 }
 
 .deleteBtn {
-  background-color: #f44336;
-  color: white;
+  background-color: var(--ig-red);
+  color: var(--ig-white);
 }
 
 .deleteBtn:hover {
-  background-color: #d32f2f;
+  background-color: #D63447;
+  transform: translateY(-1px);
 }
 
 .newPostsButton {
   position: sticky;
   top: 10px;
   z-index: 10;
-  background-color: #0084ff;
-  color: white;
+  background: var(--ig-button-gradient);
+  color: var(--ig-white);
   border: none;
-  border-radius: 20px;
+  border-radius: var(--border-radius-lg);
   padding: 10px 20px;
   margin: 10px auto;
   display: block;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(228, 64, 95, 0.3);
   transition: all 0.2s ease;
   animation: pulse 1.5s infinite;
 }
 
 .newPostsButton:hover {
-  background-color: #0077e6;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(228, 64, 95, 0.4);
 }
 
 @keyframes pulse {
@@ -1122,26 +1207,27 @@
 .deleteCommentBtn {
   background: none;
   border: none;
-  color: #f44336;
+  color: var(--ig-red);
   font-weight: 600;
   cursor: pointer;
   padding: 0;
   font-size: var(--font-size-sm);
-}
-
-.deleteCommentBtn:hover {
-  text-decoration: underline;
-}
-
-.authorName {
-  color: #1a1a1a;
   transition: color 0.2s ease;
 }
 
-/* .authorName:hover {
-  color: #2078f4;
-  text-decoration: underline;
-} */
+.deleteCommentBtn:hover {
+  color: #D63447;
+}
+
+.authorName {
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+  font-weight: 600;
+}
+
+.authorName:hover {
+  color: var(--ig-blue);
+}
 
 .postAuthor img:hover {
   opacity: 0.9;

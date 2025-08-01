@@ -8,7 +8,7 @@
     align-items: center;
     min-height: 100vh;
     padding: var(--spacing-lg);
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--ig-gradient);
     position: relative;
 }
 
@@ -19,7 +19,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.03)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
     opacity: 0.5;
 }
 
@@ -32,11 +33,11 @@
     background-color: var(--background-card);
     padding: var(--spacing-xl);
     border-radius: var(--border-radius-lg);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow-lg);
     width: 100%;
     max-width: 400px;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--border-color);
 }
 
 .auth-card h1 {
@@ -56,21 +57,21 @@
 .auth-form input {
     padding: var(--spacing-md);
     border: 2px solid var(--border-color);
-    border-radius: var(--border-radius);
+  border-radius: var(--border-radius-sm);
     font-family: inherit;
     font-size: var(--font-size-md);
     transition: var(--transition-normal);
 }
 
 .auth-form input:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.1);
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(0, 149, 246, 0.1);
     background-color: var(--background-card);
 }
 
 .auth-form button {
     padding: var(--spacing-md);
-    border-radius: var(--border-radius);
+  border-radius: var(--border-radius-sm);
     font-weight: 600;
     margin-top: var(--spacing-sm);
     font-size: var(--font-size-md);
@@ -101,7 +102,7 @@
 }
 
 .auth-link a {
-    color: var(--primary-color);
+  color: var(--secondary-color);
     font-weight: 600;
     text-decoration: none;
     transition: var(--transition-fast);
@@ -109,19 +110,19 @@
 
 .auth-link a:hover {
     text-decoration: underline;
-    color: #1464cf;
+  color: var(--primary-color);
 }
 
 /* Error Message */
 .error-message {
     color: var(--error-color);
-    background-color: rgba(231, 76, 60, 0.1);
+  background-color: rgba(237, 73, 86, 0.1);
     padding: var(--spacing-sm);
-    border-radius: var(--border-radius);
+  border-radius: var(--border-radius-sm);
     margin-bottom: var(--spacing-md);
     text-align: center;
     font-size: var(--font-size-sm);
-    border: 1px solid rgba(231, 76, 60, 0.2);
+  border: 1px solid rgba(237, 73, 86, 0.2);
 }
 
 /* Messenger Container */
@@ -207,8 +208,8 @@
     background-color: var(--background-card);
     border: 1px solid var(--border-color);
     border-top: none;
-    border-radius: 0 0 var(--border-radius) var(--border-radius);
-    box-shadow: var(--box-shadow);
+  border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+  box-shadow: var(--box-shadow-lg);
     max-height: 300px;
     overflow-y: auto;
     z-index: 100;
@@ -230,9 +231,9 @@
 }
 
 .search-highlight {
-    background-color: rgba(24, 119, 242, 0.2);
+  background-color: rgba(228, 64, 95, 0.2);
     padding: 1px 2px;
-    border-radius: 2px;
+  border-radius: var(--border-radius-sm);
 }
 
 /* Settings Panel */
@@ -244,7 +245,7 @@
     height: 100%;
     background-color: var(--background-card);
     border-left: 1px solid var(--border-color);
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow-lg);
     transition: right 0.3s ease;
     z-index: 1000;
     overflow-y: auto;
@@ -307,13 +308,13 @@
     width: 50px;
     height: 24px;
     background-color: var(--text-muted);
-    border-radius: 12px;
+  border-radius: var(--border-radius-lg);
     cursor: pointer;
     transition: var(--transition-normal);
 }
 
 .toggle-switch.active {
-    background-color: var(--primary-color);
+  background-color: var(--secondary-color);
 }
 
 .toggle-switch::before {
@@ -324,7 +325,7 @@
     width: 20px;
     height: 20px;
     background-color: var(--background-card);
-    border-radius: 50%;
+  border-radius: var(--border-radius-full);
     transition: var(--transition-normal);
 }
 
@@ -339,13 +340,13 @@
     gap: var(--spacing-md);
     padding: var(--spacing-lg);
     border-bottom: 1px solid var(--border-color);
-    background: linear-gradient(135deg, rgba(24, 119, 242, 0.1) 0%, rgba(24, 119, 242, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(228, 64, 95, 0.1) 0%, rgba(228, 64, 95, 0.05) 100%);
 }
 
 .profile-avatar {
     width: 60px;
     height: 60px;
-    border: 3px solid var(--primary-color);
+  border: 3px solid var(--primary-color);
 }
 
 .profile-info h3 {
@@ -442,7 +443,7 @@
     }
 
     .auth-container {
-        background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+    background: var(--ig-gradient);
     }
 
     .auth-card {

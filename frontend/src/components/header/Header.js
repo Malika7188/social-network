@@ -23,7 +23,7 @@ export default function Header() {
       <div className={styles.headerContent}>
         <div className={styles.leftSection}>
           <Link href="/home">
-            <h1 className="headerForumName">Notebook</h1>
+            <h1 className="headerBrandName">Vibes</h1>
           </Link>
           <SearchBar />
         </div>

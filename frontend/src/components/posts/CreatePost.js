@@ -259,7 +259,7 @@ export default function CreatePost() {
           >
             <input
               type="text"
-              placeholder={`What's on your mind, ${userData?.firstName || "there"}?`}
+              placeholder={`Share your vibe, ${userData?.firstName || "there"}...`}
               readOnly
             />
           </div>
@@ -304,7 +304,7 @@ export default function CreatePost() {
         <div className={styles.modalOverlay}>
           <div className={styles.modal}>
             <div className={styles.modalHeader}>
-              <h2>Create Post</h2>
+              <h2>Share Your Vibe</h2>
               <button
                 className={styles.closeButton}
                 onClick={() => setIsModalOpen(false)}
@@ -341,7 +341,7 @@ export default function CreatePost() {
                 <textarea
                   value={postText}
                   onChange={(e) => setPostText(e.target.value)}
-                  placeholder={`What's on your mind, ${userData?.firstName || "there"}?`}
+                  placeholder={`What's your vibe today, ${userData?.firstName || "there"}?`}
                   autoFocus
                 />
 
@@ -452,7 +452,7 @@ export default function CreatePost() {
                   className={styles.postButton}
                   disabled={!postText && !selectedFiles.length}
                 >
-                  Post
+                  Share Vibe
                 </button>
               </form>
             </div>
@@ -470,7 +470,7 @@ export default function CreatePost() {
               >
                 <i className="fas fa-arrow-left"></i>
               </button>
-              <h2>Post Settings</h2>
+              <h2>Vibe Settings</h2>
               <div></div> {/* Empty div for flex spacing */}
             </div>
 
@@ -497,7 +497,7 @@ export default function CreatePost() {
                       <div className={styles.privacyContent}>
                         <span className={styles.privacyTitle}>Public</span>
                         <p className={styles.privacyDescription}>
-                          Anyone can see this post
+                          Anyone can see this vibe
                         </p>
                       </div>
                     </label>
@@ -526,7 +526,7 @@ export default function CreatePost() {
                           Almost Private
                         </span>
                         <p className={styles.privacyDescription}>
-                          Only your followers can see this post
+                          Only your followers can see this vibe
                         </p>
                       </div>
                     </label>
@@ -551,7 +551,7 @@ export default function CreatePost() {
                       <div className={styles.privacyContent}>
                         <span className={styles.privacyTitle}>Private</span>
                         <p className={styles.privacyDescription}>
-                          Only selected followers can see this post
+                          Only selected followers can see this vibe
                         </p>
                       </div>
                     </label>
@@ -561,7 +561,7 @@ export default function CreatePost() {
 
               {privacy === "private" && (
                 <div className={styles.settingsSection}>
-                  <h3>Who can see this post?</h3>
+                  <h3>Who can see this vibe?</h3>
                   <div className={styles.searchContainer}>
                     <i className="fas fa-search"></i>
                     <input

@@ -1,4 +1,3 @@
- /* Rename header.css to Header.module.css */
 .header {
   position: fixed;
   top: 0;
@@ -6,7 +5,9 @@
   right: 0;
   height: var(--header-height);
   background-color: var(--background-card);
-  box-shadow: var(--box-shadow);
+  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.95);
   z-index: 100;
 }
 
@@ -28,8 +29,14 @@
 }
 
 .logo h1 {
-  color: var(--primary-color);
-  font-size: var(--font-size-xl);
+  font-family: var(--font-brand);
+  font-size: 1.75rem;
+  font-weight: 700;
+  background: var(--ig-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
 }
 
 .nav {
@@ -43,16 +50,16 @@
   font-size: var(--font-size-base);
   text-decoration: none;
   padding: var(--spacing-sm);
-  border-radius: var(--border-radius);
-  transition: background-color 0.2s;
+  border-radius: var(--border-radius-sm);
+  transition: all 0.2s ease;
 }
 
 .nav a:hover {
-  background-color: var(--background-main);
+  color: var(--text-primary);
 }
 
 .nav a.active {
-  color: var(--primary-color);
+  color: var(--text-primary);
 }
 
 .iconLink {
@@ -61,19 +68,20 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  transition: all 0.2s;
+  border-radius: var(--border-radius-sm);
+  transition: all 0.2s ease;
   position: relative;
 }
 
 .iconLink:hover {
-  background-color: var(--background-main);
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: scale(1.05);
 }
 
 .iconLink i {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: var(--text-secondary);
-  transition: color 0.2s;
+  transition: all 0.2s ease;
 }
 
 .iconLink.active {
@@ -87,12 +95,13 @@
   left: 0;
   width: 100%;
   height: 3px;
-  background-color: var(--primary-color);
+  background: var(--ig-gradient);
   border-radius: 3px 3px 0 0;
 }
 
 .iconLink.active i {
-  color: var(--primary-color);
+  color: var(--text-primary);
+  transform: scale(1.1);
 }
 
 .iconButton {
@@ -105,23 +114,24 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  transition: background-color 0.2s;
+  border-radius: var(--border-radius-sm);
+  transition: all 0.2s ease;
 }
 
 .iconButton:hover {
-  background-color: var(--background-main);
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: scale(1.05);
 }
 
 .iconButton i {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: var(--text-secondary);
 }
 
 .nav img {
   width: 50px;
   height: 50px;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-full);
 }
 
 .profileDropdownContainer {
@@ -131,14 +141,16 @@
 .profileIcon {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: var(--border-radius-full);
   cursor: pointer;
   object-fit: cover;
-  transition: opacity 0.2s;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
 }
 
 .profileIcon:hover {
-  opacity: 0.9;
+  border-color: var(--ig-grey);
+  transform: scale(1.05);
 }
 
 .dropdownMenu {
@@ -146,11 +158,12 @@
   top: calc(100% + 10px);
   right: 0;
   background-color: var(--background-card);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow-lg);
   width: 300px;
   padding: var(--spacing-sm);
   z-index: 1000;
+  border: 1px solid var(--border-color);
 }
 
 .profileHeader {
@@ -163,7 +176,7 @@
 .dropdownProfilePic {
   width: 60px;
   height: 60px;
-  border-radius: 50%;
+  border-radius: var(--border-radius-full);
   object-fit: cover;
 }
 
@@ -177,6 +190,7 @@
   color: var(--text-primary);
   font-size: var(--font-size-lg);
   margin: 0;
+  font-weight: 600;
 }
 
 .profileInfo span {
@@ -202,12 +216,14 @@
   border: none;
   background: none;
   cursor: pointer;
-  transition: background-color 0.2s;
-  border-radius: var(--border-radius);
+  transition: all 0.2s ease;
+  border-radius: var(--border-radius-sm);
+  font-weight: 500;
 }
 
 .dropdownItem:hover {
-  background-color: var(--background-main);
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: translateX(2px);
 }
 
 .dropdownItem i {
@@ -229,16 +245,18 @@
   display: flex;
   align-items: center;
   background-color: var(--background-main);
-  border-radius: 8px;
+  border-radius: var(--border-radius-sm);
   padding: 8px 16px;
   width: 240px;
-  transition: width 0.2s ease;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
 }
 
 .searchWrapper:focus-within {
   width: 300px;
   background-color: var(--background-card);
-  box-shadow: var(--box-shadow);
+  border-color: var(--border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .searchWrapper i {

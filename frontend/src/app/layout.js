@@ -6,8 +6,8 @@ import { UserStatusProvider } from "@/context/userStatusContext";
 import { ChatProvider } from "@/context/chatContext";
 
 export const metadata = {
-  title: "NoteBook",
-  description: "A Facebook-like application",
+  title: "Vibes",
+  description: "Share your vibes with the world",
 };
 
 export default function RootLayout({ children }) {

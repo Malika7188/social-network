@@ -1,16 +1,16 @@
-# Social Network Platform
+# Vibes Social Network Platform
 
-A modern, feature-rich social networking platform built with Next.js frontend, Electron desktop application, and Go backend, featuring real-time communications, group management, and comprehensive social features.
+A modern, feature-rich social networking platform built with Next.js frontend, Electron desktop application, and Go backend, featuring real-time communications, group management, and comprehensive social features with Instagram-inspired design.
 
 ## Overview
 
-This platform provides a complete social networking experience with features like user authentication, real-time chat, group management, post sharing, and more. Built with scalability and performance in mind, it uses Next.js for the web frontend, Electron for the cross-platform desktop application, and Go for the backend services. The desktop application seamlessly integrates with the web platform, allowing users to communicate across both platforms in real-time.
+This platform provides a complete social networking experience with features like user authentication, real-time chat, group management, post sharing, and more. Built with scalability and performance in mind, it uses Next.js for the web frontend, Electron for the cross-platform desktop application, and Go for the backend services. The desktop application seamlessly integrates with the web platform, allowing users to communicate across both platforms in real-time. The UI is designed with Instagram's modern aesthetic in mind.
 
 ---
 
 ## Table of Contents
 
-- [Social Network Platform](#social-network-platform)
+- [Vibes Social Network Platform](#vibes-social-network-platform)
   - [Overview](#overview)
   - [Table of Contents](#table-of-contents)
   - [🚀 Key Features](#-key-features)
@@ -105,7 +105,9 @@ This platform provides a complete social networking experience with features lik
 - **Framework**: Next.js 13+ with App Router
 - **State Management**: React Context API
 - **Real-time Communication**: WebSocket
-- **Styling**: CSS Modules
+- **Styling**: CSS Modules with Instagram-inspired design
+- **Typography**: Inter font family
+- **Color Palette**: Instagram-inspired gradient colors
 - **Development Tools**: ESLint, Prettier
 
 ### Desktop Application
@@ -228,8 +230,8 @@ backend/
 
 1. **Clone the Repository**
 ```bash
-git clone https://github.com/Athooh/social-network.git
-cd social-network
+git clone https://github.com/Athooh/vibes-social-network.git
+cd vibes-social-network
 ```
 
 2. **Backend Setup**
@@ -381,7 +383,7 @@ POST   /api/posts/:id/like   # Like post
 
 ## Contributing
 
-We welcome contributions to the Social Network project! If you'd like to contribute, please follow these steps:
+We welcome contributions to the Vibes Social Network project! If you'd like to contribute, please follow these steps:
 
 1. Fork the repository.
 2. Create a new branch for your feature or bugfix.
@@ -405,4 +407,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-Thank you for checking out the Social Network project! If you have any questions or feedback, feel free to open an issue or reach out to the maintainers. Happy coding! 🚀
+Thank you for checking out the Vibes Social Network project! If you have any questions or feedback, feel free to open an issue or reach out to the maintainers. Happy coding! 🚀
