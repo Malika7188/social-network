@@ -83,3 +83,4 @@ backend/pkg/db/migrations/*.sql
 # cache directories
 .cache/
 .temp/
+.env
