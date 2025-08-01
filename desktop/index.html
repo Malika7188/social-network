@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: http://localhost:8080; connect-src 'self' ws://localhost:8080 http://localhost:8080;">
+    <title>NoteBook Messenger</title>
+
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="renderer/css/main.css">
+    <link rel="stylesheet" href="renderer/css/components.css">
+    <link rel="stylesheet" href="renderer/css/page.css">
+
+    <!-- Google Fonts for Sour Gummy -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Network & Connection Status Indicator -->
+    <div id="network-indicator" class="network-status offline">
+        <i class="fas fa-wifi"></i>
+        <span>Connecting...</span>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <h1 class="forum-name">Notebook</h1>
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <!-- Main Application Container -->
+    <div id="app-container" class="app-container" style="display: none;">
+        <!-- Authentication Section -->
+        <div id="auth-section" class="auth-container">
+            <h1 class="forum-name">Notebook</h1>
+            <div class="auth-card">
+                <h1 id="auth-title">Login to Notebook</h1>
+                <div id="error-message" class="error-message" style="display: none;"></div>
+
+                <!-- Login Form -->
+                <form id="login-form" class="auth-form">
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" placeholder="Password" required>
+                        <div class="password-toggle" id="password-toggle">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-tertiary" id="login-btn">
+                        <span class="btn-text">Login</span>
+                        <div class="btn-spinner" style="display: none;">
+                            <div class="bounce1"></div>
+                            <div class="bounce2"></div>
+                            <div class="bounce3"></div>
+                        </div>
+                    </button>
+                </form>
+
+                <p class="auth-link">
+                    New to Notebook?
+                    <a href="#" id="register-link">Create Account</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Main Messenger Section -->
+        <div id="messenger-section" class="messenger-container" style="display: none;">
+            <!-- Header -->
+            <header class="messenger-header">
+                <div class="header-left">
+                    <h1 class="forum-name">Notebook</h1>
+                </div>
+                <div class="header-center">
+                </div>
+                <div class="header-right">
+                    <button class="header-btn" id="logout-btn" title="Logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <div class="messenger-content">
+                <!-- Conversations Sidebar -->
+                <aside class="conversations-sidebar" id="conversations-sidebar">
+                    <div class="conversations-header">
+                        <h2>Messages</h2>
+                    </div>
+
+                    <div class="search-container">
+                        <input type="text" id="conversation-search" placeholder="Search conversations..."
+                            class="search-input">
+                    </div>
+
+                    <div class="conversations-list" id="conversations-list">
+                        <div class="loading-conversations">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Loading conversations...</p>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Chat Area -->
+                <main class="chat-area" id="chat-area">
+                    <div class="no-chat-selected" id="no-chat-selected">
+                        <div class="no-chat-content">
+                            <i class="fas fa-comments"></i>
+                            <h2>Select a conversation to start messaging</h2>
+                            <p>Choose from your existing conversations or start a new one</p>
+                        </div>
+                    </div>
+
+                    <!-- Active Chat -->
+                    <div class="active-chat" id="active-chat" style="display: none;">
+                        <!-- Chat Header -->
+                        <div class="chat-header" id="chat-header">
+                            <button class="back-button" id="back-button">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <div class="chat-user-info">
+                                <div class="avatar-container">
+                                    <img id="chat-avatar" src="./avatar.png" alt="User" class="avatar">
+                                    <span class="status-indicator" id="chat-status"></span>
+                                </div>
+                                <div class="user-details">
+                                    <h2 id="chat-name">User Name</h2>
+                                    <span class="user-status" id="chat-user-status">Offline</span>
+                                </div>
+                            </div>
+                            <div class="search-container">
+                                <input type="text" id="global-search" placeholder="Search in this conversation..."
+                                    class="global-search">
+                                <div class="search-icon-container">
+                                    <i class="fas fa-search search-icon"></i>
+                                </div>
+                                <div id="search-results" class="search-results"></div>
+                            </div>
+                        </div>
+
+                        <!-- Messages List -->
+                        <div class="messages-list" id="messages-list">
+                            <div class="messages-container" id="messages-container">
+                                <!-- Messages will be inserted here -->
+                            </div>
+
+                            <!-- Typing Indicator -->
+                            <div class="typing-indicator" id="typing-indicator" style="display: none;">
+                                <div class="typing-dots">
+                                    <div class="typing-dot"></div>
+                                    <div class="typing-dot"></div>
+                                    <div class="typing-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Message Input -->
+                        <form class="message-input-form" id="message-input-form">
+                            <button type="button" class="emoji-button" id="emoji-button">
+                                😊
+                            </button>
+                            <input type="text" id="message-input" placeholder="Type a message..." class="message-input">
+                            <button type="submit" class="send-button" id="send-button">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+
+                        <!-- Emoji Picker -->
+                        <div class="emoji-picker" id="emoji-picker" style="display: none;">
+                            <div class="emoji-picker-header">
+                                <h4>Emojis</h4>
+                                <button type="button" class="close-emoji-picker" id="close-emoji-picker">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="category-tabs">
+                                <button class="category-tab active" data-category="popular">
+                                    <i class="fas fa-star"></i>
+                                </button>
+                                <button class="category-tab" data-category="smileys">
+                                    <i class="fas fa-smile"></i>
+                                </button>
+                                <button class="category-tab" data-category="hearts">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <button class="category-tab" data-category="handGestures">
+                                    <i class="fas fa-hand-peace"></i>
+                                </button>
+                            </div>
+                            <div class="emoji-grid" id="emoji-grid">
+                                <!-- Emojis will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Message Modal -->
+    <div class="modal-overlay" id="new-message-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>New Message</h3>
+                <button class="close-button" id="close-new-message-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="search-contacts" placeholder="Search people..." class="search-people" autofocus>
+                <div class="suggested-people" id="suggested-people">
+                    <div class="loading-contacts">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading contacts...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- JavaScript Files - Load in correct order -->
+    <script src="renderer/js/components.js"></script>
+    <script src="renderer/js/auth.js"></script>
+    <script src="renderer/js/websocket.js"></script>
+    <script src="renderer/js/userStatus.js"></script>
+    <script src="renderer/js/chat.js"></script>
+    <script src="renderer/js/router.js"></script>
+    <script src="renderer/js/app.js"></script>
+    <script src="renderer/js/init.js"></script>
+</body>
+
+</html>

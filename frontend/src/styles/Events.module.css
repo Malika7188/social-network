@@ -1,0 +1,257 @@
+.container {
+    padding-top: calc(var(--header-height) + var(--spacing-md));
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  gap: var(--spacing-md);
+  min-height: 100vh;
+  max-width: calc(1920px - 400px);
+  margin: 0 auto;
+}
+
+.main {
+  margin-bottom: 20px;
+}
+
+.mainContent {
+  width: calc(1340px - 200px);
+  min-width: 0; /* Prevent flex item from overflowing */
+  margin-bottom: 20px;
+}
+
+.eventsList {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.eventCard {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.eventsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.eventsHeader h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.createEventBtn {
+  background-color: #1877f2;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+
+.createEventBtn:hover {
+  background-color: #1666d8;
+}
+
+.eventsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.eventCard {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.eventCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.eventBanner {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.bannerImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dateBadge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 6px;
+  padding: 6px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.month {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.day {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.eventInfo {
+  padding: 16px;
+  position: relative;
+}
+
+.eventInfo h3 {
+  margin-block: 8px;
+}
+
+.profilePic {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  border: 4px solid white;
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  object-fit: cover;
+}
+
+.eventName {
+  margin: 32px 0 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.eventPrivacy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #65676b;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.memberInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.memberAvatars {
+  display: flex;
+}
+
+.memberAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-left: -8px;
+}
+
+.memberAvatar:first-child {
+  margin-left: 0;
+}
+
+.memberCount {
+  color: #65676b;
+  font-size: 0.9rem;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #e4e6eb;
+  margin: 12px 0;
+}
+
+.eventActions {
+  display: flex;
+  gap: 8px;
+}
+
+.inviteBtn, .joinBtn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 50%;
+}
+
+.inviteBtn {
+  background-color: #f0f2f5;
+  border: none;
+  color: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.inviteBtn:hover {
+  background-color: #e4e6eb;
+}
+
+.joinBtn {
+  background-color: #1877f2;
+  border: none;
+  color: white;
+  flex: 1;
+}
+
+.joinBtn:hover {
+  background-color: #1666d8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .eventsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .eventsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .eventsHeader {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  
+  .createEventBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}

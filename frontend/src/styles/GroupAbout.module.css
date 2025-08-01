@@ -1,0 +1,136 @@
+.aboutContainer {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mainInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mainInfo h2 {
+  font-size: 1.5rem;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.description {
+  color: #4a4a4a;
+  line-height: 1.6;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.statItem i {
+  font-size: 24px;
+  color: #0066cc;
+}
+
+.statItem h3 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.statItem p {
+  color: #666;
+  margin: 4px 0 0 0;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.inviteButton, .leaveButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.inviteButton {
+  background: #0066cc;
+  color: white;
+}
+
+.inviteButton:hover {
+  background: #0052a3;
+}
+
+.leaveButton {
+  background: #f8f9fa;
+  color: #dc3545;
+  border: 1px solid #dc3545;
+}
+
+.leaveButton:hover {
+  background: #dc3545;
+  color: white;
+}
+
+.confirmDialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.dialogContent {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+}
+
+.dialogActions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.cancelButton, .confirmButton {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.cancelButton {
+  background: #f8f9fa;
+  color: #666;
+}
+
+.confirmButton {
+  background: #dc3545;
+  color: white;
+}

@@ -1,0 +1,104 @@
+.profileContainer {
+  width: calc(1920px - 400px);
+  margin: 0 auto;
+}
+
+.privateProfileContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  padding: 2rem;
+}
+
+.privateProfileCard {
+  text-align: center;
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+}
+
+.privateProfileIcon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.privateProfileTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.privateProfileMessage {
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.followRequestButton {
+  background: #1877f2;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.followRequestButton:hover {
+  background: #166fe5;
+}
+
+.contentLayout {
+  display: grid;
+  grid-template-columns: 360px 1fr 360px;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.leftSidebar {
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.mainContent {
+  min-width: 0;
+  /* Prevents content from breaking layout */
+}
+
+.rightSidebar {
+  gap: 0;
+  height: fit-content;
+  margin-top: 0;
+}
+
+/* Responsive layout */
+@media (max-width: 1200px) {
+  .contentLayout {
+    grid-template-columns: 250px 1fr;
+  }
+
+  .rightSidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .contentLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .leftSidebar {
+    display: none;
+  }
+
+  .profileContainer {
+    width: 100%;
+    max-width: 100%;
+  }
+}

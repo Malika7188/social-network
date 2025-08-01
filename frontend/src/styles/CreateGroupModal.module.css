@@ -1,0 +1,253 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal {
+  background: white;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease-out;
+}
+
+.modalHeader {
+  padding: 20px;
+  border-bottom: 1px solid #e4e6eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 1;
+}
+
+.modalHeader h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #65676b;
+  padding: 4px 12px;
+  border-radius: 50%;
+}
+
+.closeButton:hover {
+  background-color: #f0f2f5;
+}
+
+.form {
+  padding: 20px;
+}
+
+.imageUpload {
+  position: relative;
+  margin-bottom: 60px;
+}
+
+.bannerUpload {
+  height: 200px;
+  background-color: #f0f2f5;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.bannerUpload.hasImage {
+  background-size: cover;
+  background-position: center;
+}
+
+.profileUpload {
+  width: 100px;
+  height: 100px;
+  background-color: #f0f2f5;
+  border-radius: 8px;
+  position: absolute;
+  bottom: -50px;
+  left: 20px;
+  border: 4px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.profileUpload.hasImage {
+  background-size: cover;
+  background-position: center;
+}
+
+.imageUpload input[type="file"] {
+  display: none;
+}
+
+.imageUpload label {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #65676b;
+}
+
+.imageUpload label i {
+  font-size: 24px;
+}
+
+.formFields {
+  margin-top: 20px;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+}
+
+.inputGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.inputGroup input[type="text"],
+.inputGroup textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e4e6eb;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.inputGroup input[type="text"]:focus,
+.inputGroup textarea:focus {
+  outline: none;
+  border-color: #1877f2;
+}
+
+.privacyOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #e4e6eb;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.radioLabel:hover {
+  background-color: #f0f2f5;
+}
+
+.radioLabel input[type="radio"] {
+  margin-top: 4px;
+}
+
+.radioLabel i {
+  font-size: 20px;
+  color: #65676b;
+  margin-top: 2px;
+}
+
+.radioLabel div {
+  display: flex;
+  flex-direction: column;
+}
+
+.radioLabel span {
+  font-weight: 500;
+}
+
+.radioLabel small {
+  color: #65676b;
+  font-size: 0.9rem;
+}
+
+.modalFooter {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e4e6eb;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.cancelBtn,
+.createBtn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.cancelBtn {
+  background: none;
+  border: none;
+  color: #65676b;
+}
+
+.cancelBtn:hover {
+  background-color: #f0f2f5;
+}
+
+.createBtn {
+  background-color: #1877f2;
+  border: none;
+  color: white;
+}
+
+.createBtn:hover {
+  background-color: #1666d8;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .modal {
+    margin: 0 16px;
+  }
+  
+  .privacyOptions {
+    gap: 8px;
+  }
+} 

@@ -1,0 +1,33 @@
+{
+  "name": "social-network",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "next start",
+    "lint": "next lint",
+    "backend:build": "cd ../backend && make build",
+    "backend:run": "cd ../backend && make run",
+    "backend:test": "cd ../backend && make test",
+    "backend:migrate-up": "cd ../backend && make migrate-up",
+    "backend:migrate-down": "cd ../backend && make migrate-down",
+    "dev:backend": "npm run backend:run",
+    "dev:frontend": "next dev",
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "build": "npm run build && npm run backend:build"
+  },
+  "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "dotenv": "^16.4.7",
+    "next": "^15.2.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/estree": "^1.0.6",
+    "concurrently": "^8.2.2",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.7"
+  }
+}

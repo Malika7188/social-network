@@ -1,0 +1,198 @@
+.membersContainer {
+  padding: 24px;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  border-radius: 20px;
+  padding: 8px 16px;
+  width: 300px;
+}
+
+.searchBar i {
+  color: #666;
+  margin-right: 8px;
+}
+
+.searchBar input {
+  border: none;
+  background: none;
+  outline: none;
+  width: 100%;
+}
+
+.tabsContainer {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #eee;
+}
+
+.tabButton {
+  padding: 12px 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #666;
+  font-weight: 500;
+  position: relative;
+}
+
+.tabButton.active {
+  color: #0066cc;
+}
+
+.tabButton.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #0066cc;
+}
+
+.membersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.memberCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+.memberInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.details h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.online {
+  color: #28a745;
+  font-size: 0.875rem;
+}
+
+.offline {
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.adminBadge {
+  background: #e9ecef;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  color: #495057;
+  margin-top: 4px;
+  display: inline-block;
+}
+
+.actions button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.followButton {
+  background: #0066cc;
+  color: white;
+}
+
+.followButton:hover {
+  background: #0052a3;
+}
+
+.requestCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.requestActions {
+  display: flex;
+  gap: 8px;
+}
+
+.acceptButton,
+.rejectButton {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.acceptButton {
+  background: #28a745;
+  color: white;
+}
+
+.acceptButton:hover {
+  background: #218838;
+}
+
+.rejectButton {
+  background: #dc3545;
+  color: white;
+}
+
+.rejectButton:hover {
+  background: #c82333;
+}
+
+.requestDate {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.requestBadge {
+  background: #dc3545;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  margin-left: 6px;
+}
+
+.noRequests {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 24px;
+  color: #666;
+  font-style: italic;
+}

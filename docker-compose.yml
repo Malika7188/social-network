@@ -1,0 +1,50 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend:/app
+    environment:
+      - LOG_LEVEL=info
+      - LOG_FILE_PATH=/app/data/app.log
+      - DB_PATH=/app/data/social_network.db
+      - UPLOAD_DIR=/app/uploads
+      - ENABLE_COLOR=true
+      - SERVER_PORT=8080
+      - CORS_ORIGIN=http://localhost:3000
+      - SERVER_HOST=0.0.0.0  # Fixed typo: HOSt → HOST
+    networks:
+      - app-network
+    tty: true
+    stdin_open: true
+    # healthcheck:
+    #   test: ["CMD", "wget", "--spider", "-q", "http://localhost:8080/api/auth/health"]
+    #   interval: 10s
+    #   timeout: 5s
+    #   retries: 5
+    #   start_period: 5s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend:8080  # Use internal Docker DNS
+    networks:
+      - app-network
+    depends_on:
+      - backend
+        # condition: service_healthy
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  data:
+  uploads:

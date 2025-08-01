@@ -1,0 +1,236 @@
+.container {
+  position: relative;
+  display: inline-block;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: #666;
+  position: relative;
+  font-size: 1.2rem;
+}
+
+.iconButton:hover {
+  color: #333;
+}
+
+.active {
+  color: #007bff;
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #ff4444;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  min-width: 18px;
+  text-align: center;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 320px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+  margin-top: 8px;
+}
+
+.title {
+  padding: 12px 16px;
+  margin: 0;
+  border-bottom: 1px solid #eee;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.notificationList {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.notificationItem {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s;
+}
+
+.notificationItem:hover {
+  background-color: #f8f9fa;
+}
+
+.notification {
+  display: flex;
+  gap: 8px;
+}
+
+.text {
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.time {
+  color: #888;
+  font-size: 0.8rem;
+  display: block;
+  margin-top: 4px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.acceptButton, .declineButton {
+  padding: 4px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.acceptButton {
+  background-color: #28a745;
+  color: white;
+}
+
+.acceptButton:hover {
+  background-color: #218838;
+}
+
+.declineButton {
+  background-color: #dc3545;
+  color: white;
+}
+
+.declineButton:hover {
+  background-color: #c82333;
+}
+
+.emptyState {
+  padding: 24px 16px;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+} 
+.loadingState {
+  padding: 10px;
+  text-align: center;
+  color: #666;
+}
+.headerActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.headerTitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.actionButton {
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: transparent;
+  color: #666;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.actionButton:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.unread {
+  background-color: #f0f7ff;
+}
+.notificationHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.markReadButton {
+  position: relative;
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: 8px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.notificationItem:hover .markReadButton {
+  opacity: 1;
+}
+
+.markReadButton:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.unread {
+  background-color: #f0f7ff;
+}
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 8px;
+  opacity: 0;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+.markReadButton:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Add a small arrow to the tooltip */
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent rgba(0, 0, 0, 0.8);
+}

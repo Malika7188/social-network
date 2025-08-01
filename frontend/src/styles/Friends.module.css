@@ -1,0 +1,172 @@
+.container {
+  padding-top: calc(var(--header-height) + var(--spacing-md));
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  gap: var(--spacing-md);
+  min-height: 100vh;
+  max-width: calc(1920px - 400px);
+  margin: 0 auto;
+}
+
+.tabsContainer {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  background-color: none;
+}
+
+.tabButton::last-child {
+  border-right: none;
+  padding-left: 0;
+}
+
+.tabButton {
+  color: var(--text-secondary);
+  border-right: 2px solid var(--border-color);
+  background-color: none;
+  border-radius: 0;
+}
+
+.tabsContainer button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+  background-color: none;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-inline: 2px solid var(--border-color);
+}
+
+.activeButton {
+  transform: scale(0.98);
+}
+
+.activeTab {
+  color: #1877f2;
+  border-bottom: 3px solid #1877f2;
+  /* background-color: rgba(24, 119, 242, 0.05); */
+  font-weight: bold;
+}
+
+.requestCount {
+  background-color: var(--background-card);
+  color: var(--text-primary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 50%;
+  margin-left: var(--spacing-sm);
+}
+
+.main {
+  margin-bottom: 20px;
+}
+
+.mainContent {
+  width: calc(1340px - 200px);
+  min-width: 0;
+  /* Prevent flex item from overflowing */
+  margin-bottom: 20px;
+}
+
+.friendsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.friendCard {
+  background: var(--background-card);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: var(--box-shadow);
+}
+
+.profileImage {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: var(--spacing-md);
+}
+
+.friendName {
+  font-size: var(--font-size-lg);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.mutualFriends {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+}
+
+.mutualFriendsAvatars {
+  display: flex;
+  align-items: center;
+}
+
+.mutualFriendAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--background-card);
+  object-fit: cover;
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  width: 100%;
+}
+
+.onlineIndicator {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  background-color: #4CAF50;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.confirmButton,
+.declineButton {
+  flex: 1;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius);
+  border: none;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.confirmButton {
+  background-color: #28a745;
+  color: white;
+}
+
+.confirmButton:hover {
+  background-color: #218838;
+}
+
+.declineButton {
+  background-color: #dc3545;
+  color: white;
+  border: 1px solid var(--border-color);
+}
+
+.declineButton:hover {
+  background-color: #e4e6eb;
+  color: #c82333;
+  border-color: var(--danger-color);
+}

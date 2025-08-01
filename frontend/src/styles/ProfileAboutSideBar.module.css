@@ -1,0 +1,59 @@
+.aboutSection {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .about, .info {
+    margin-bottom: 24px;
+  }
+  
+  .about h3, .info h3 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: #1a1a1a;
+  }
+  
+  .bio {
+    color: #4b4f56;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  
+  .editButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f0f2f5;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: #050505;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+  
+  .editButton:hover {
+    background: #e4e6eb;
+  }
+  
+  .infoList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .infoList li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    color: #4b4f56;
+  }
+  
+  .icon {
+    font-size: 20px;
+    color: #65676b;
+    flex-shrink: 0;
+  }

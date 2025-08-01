@@ -1,0 +1,44 @@
+{
+  "name": "social-network-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "frontend:dev": "cd frontend && npm run dev:frontend",
+    "frontend:build": "cd frontend && npm run build",
+    "frontend:start": "cd frontend && npm run start",
+    "frontend:lint": "cd frontend && npm run lint",
+    "backend:build": "cd backend && make build",
+    "backend:dev": "cd backend && make run",
+    "backend:test": "cd backend && make test",
+    "backend:migrate-up": "cd backend && make migrate-up",
+    "backend:migrate-down": "cd backend && make migrate-down",
+    "backend:clean": "cd backend && make clean",
+    "backend:data": "cd backend && make data",
+    "dev": "concurrently \"npm run frontend:dev\" \"npm run backend:dev\"",
+    "build": "npm run frontend:build && npm run backend:build",
+    "start": "concurrently \"npm run frontend:start\" \"npm run backend:run\"",
+    "desktop:dev": "cd desktop && npm run dev",
+    "desktop:build": "cd desktop && npm run build",
+    "desktop:start": "cd desktop && npm start",
+    "setup": "npm install && cd frontend && npm install && cd ../desktop && npm install",
+    "dev:all": "concurrently \"npm run frontend:dev\" \"npm run backend:dev\" \"npm run desktop:dev\"",
+    "clean": "npm run backend:clean"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "cors": "^2.8.5",
+    "date-fns": "^4.1.0",
+    "dotenv": "^16.5.0",
+    "next-auth": "^4.24.11",
+    "react-icons": "^5.5.0",
+    "styled-components": "^6.1.15"
+  }
+}

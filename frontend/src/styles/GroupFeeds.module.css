@@ -1,0 +1,96 @@
+.groupSection {
+  border-radius: 8px;
+  overflow: hidden;
+  width: calc(1370px - 600px);
+}
+
+.groupHeader {
+  background: var(--fb-white);
+  padding: .8rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.groupInfo {
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.groupBanner {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.groupDetails {
+  flex: 1;
+  max-width: calc(100% - 120px); /* Account for image width + gap */
+  overflow: hidden;
+}
+
+.groupDetails h2 {
+  margin: 0 0 0.5rem;
+  color: var(--text-primary);
+}
+
+.groupDetails p {
+  color: var(--text-secondary);
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  padding: .3rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+.groupMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.groupMeta i {
+  margin-right: 0.25rem;
+}
+
+.groupActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.joinButton {
+  padding: 0.5rem 1rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.moreButton {
+  padding: 0.5rem;
+  background: var(--background-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+@media  screen and (max-width: 840px) {
+  .groupHeader {
+    margin-bottom: 10px;
+  }
+
+  .groupSection {
+    width: 100%;
+  }
+
+  .leftSidebar, .rightSidebar {
+    display: none;
+  }
+}
