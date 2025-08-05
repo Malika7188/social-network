@@ -149,6 +149,46 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const register = async (formData) => {
+    try {
+      setLoading(true);
+
+      const response = await fetch(`${API_URL}/auth/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data && data.user && data.token) {
+        localStorage.setItem("userData", JSON.stringify(data.user));
+        localStorage.setItem("token", data.token);
+        setCurrentUser(data.user);
+        setToken(data.token);
+
+        document.cookie = `token=${data.token}; path=/; max-age=86400; samesite=strict`;
+        showToast("Registered successfully!", "success");
+        return true;
+      } else {
+        const errorMessage = data.message || data.error || "Registration failed";
+        await handleApiError({ message: errorMessage }, errorMessage);
+        setLoading(false);
+        return false;
+      }
+    } catch (error) {
+      setLoading(false);
+      await handleApiError(error, "Registration failed");
+      return false;
+    }
+  };
+
   const getAuthHeader = () => {
     return token ? { Authorization: `Bearer ${token}` } : {};
   };
@@ -263,6 +303,7 @@ export const AuthProvider = ({ children }) => {
     login,
     logout: () => handleLogout(true),
     signUp,
+    register,
     getAuthHeader,
     authenticatedFetch,
     currentUser,

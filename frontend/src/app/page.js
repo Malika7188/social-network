@@ -65,7 +65,6 @@ export default function Login() {
       <div className={styles.authCard}>
         <h1 id="auth-title">Login to Vibes</h1>
         {error && <p className={styles.error}>{error}</p>}
-        }
         <form className={styles.authForm} onSubmit={handleSubmit}>
           <input
             type="email"
