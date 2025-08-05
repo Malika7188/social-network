@@ -55,7 +55,7 @@
 }
 
 .authCard h1 {
-  color: var(--text-primary);
+  color: black;
   font-size: var(--font-size-xl);
   margin-bottom: var(--spacing-lg);
   text-align: center;
@@ -83,7 +83,7 @@
 }
 
 .formGroup label {
-  color: var(--text-secondary);
+  color: rgba(23, 13, 13, 0.705);
   font-size: var(--font-size-xs);
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -105,8 +105,8 @@
   font-size: var(--font-size-sm);
   transition: all var(--transition-fast);
   font-weight: 400;
-  background-color: #FAFAFA;
-  color: var(--text-primary);
+  background-color: #eeeeee;
+  color: black;
 }
 
 .authForm input:focus,
@@ -114,7 +114,7 @@
   border-color: var(--ig-blue);
   box-shadow: 0 0 0 2px rgba(0, 149, 246, 0.2);
   outline: none;
-  background-color: var(--background-card);
+  background-color: whitesmoke;
   transform: translateY(-1px);
 }
 
@@ -229,7 +229,7 @@ h1.brandName {
 }
 
 .passwordToggle:hover {
-  color: var(--text-primary);
+  color: black;
   background-color: var(--ig-hover-overlay);
   transform: translateY(-50%) scale(1.1);
 }
