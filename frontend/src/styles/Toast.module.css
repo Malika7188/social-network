@@ -1,64 +1,70 @@
+/* Instagram-style Toast Notifications */
 .toastContainer {
   position: fixed;
-  top: 90px;
-  right: 20px;
+  top: calc(var(--header-height) + var(--spacing-lg));
+  right: var(--spacing-lg);
   z-index: 9999;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--spacing-sm);
+  max-width: 400px;
 }
 
 .toast {
   min-width: 300px;
-  padding: 16px;
-  border-radius: 12px;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
   display: flex;
   align-items: center;
-  gap: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  animation: slideUp 0.3s ease-out forwards;
-  transition: transform 0.3s ease-out;
+  gap: var(--spacing-md);
+  box-shadow: var(--box-shadow-xl);
+  animation: ig-toast-slide-in 0.3s ease-out forwards;
+  transition: transform var(--transition-fast);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
 }
 
 .toast.removing {
-  animation: slideDown 0.3s ease-out forwards;
+  animation: ig-toast-slide-out 0.3s ease-out forwards;
 }
 
 .success {
-  background-color: #ecfdf3;
-  border: 1px solid #12b76a;
-  color: #027948;
+  background: linear-gradient(135deg, rgba(0, 200, 81, 0.95) 0%, rgba(0, 200, 81, 0.9) 100%);
+  color: white;
+  border-left: 4px solid var(--ig-green);
 }
 
 .error {
-  background-color: #fef3f2;
-  border: 1px solid #f04438;
-  color: #b42318;
+  background: linear-gradient(135deg, rgba(237, 73, 86, 0.95) 0%, rgba(237, 73, 86, 0.9) 100%);
+  color: white;
+  border-left: 4px solid var(--ig-red);
 }
 
 .info {
-  background-color: #f0f9ff;
-  border: 1px solid #0ba5ec;
-  color: #026aa2;
+  background: linear-gradient(135deg, rgba(0, 149, 246, 0.95) 0%, rgba(0, 149, 246, 0.9) 100%);
+  color: white;
+  border-left: 4px solid var(--ig-blue);
 }
 
 .warning {
-  background-color: #fffaeb;
-  border: 1px solid #f79009;
-  color: #b54708;
+  background: linear-gradient(135deg, rgba(252, 204, 99, 0.95) 0%, rgba(252, 204, 99, 0.9) 100%);
+  color: var(--text-primary);
+  border-left: 4px solid var(--ig-yellow);
 }
 
 .icon {
-  font-size: 20px;
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .message {
   flex: 1;
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   font-weight: 500;
+  line-height: 1.4;
 }
 
 .closeButton {
@@ -66,36 +72,76 @@
   border: none;
   color: inherit;
   cursor: pointer;
-  opacity: 0.7;
-  padding: 4px;
-  font-size: 18px;
+  opacity: 0.8;
+  padding: var(--spacing-xs);
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-fast);
+  width: 24px;
+  height: 24px;
 }
 
 .closeButton:hover {
   opacity: 1;
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
 }
 
-@keyframes slideUp {
+@keyframes ig-toast-slide-in {
   from {
-    transform: translateY(100%);
+    transform: translateX(100%);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: translateX(0);
     opacity: 1;
   }
 }
 
-@keyframes slideDown {
+@keyframes ig-toast-slide-out {
   from {
-    transform: translateY(0);
+    transform: translateX(0);
     opacity: 1;
   }
   to {
-    transform: translateY(100%);
+    transform: translateX(100%);
     opacity: 0;
   }
-} 
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .toastContainer {
+    top: calc(var(--header-height-mobile) + var(--spacing-md));
+    right: var(--spacing-md);
+    left: var(--spacing-md);
+    max-width: none;
+  }
+
+  .toast {
+    min-width: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .toastContainer {
+    right: var(--spacing-sm);
+    left: var(--spacing-sm);
+  }
+
+  .toast {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .message {
+    font-size: var(--font-size-xs);
+  }
+
+  .icon {
+    font-size: 1rem;
+  }
+}

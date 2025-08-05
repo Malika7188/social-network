@@ -1,96 +1,200 @@
+/* Instagram-style Group Feeds */
 .groupSection {
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   overflow: hidden;
-  width: calc(1370px - 600px);
+  width: 100%;
+  max-width: 614px;
+  margin: 0 auto var(--spacing-lg);
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--border-color);
+  background-color: var(--background-card);
+  transition: all var(--transition-fast);
+}
+
+.groupSection:hover {
+  box-shadow: var(--box-shadow-lg);
+  transform: translateY(-2px);
 }
 
 .groupHeader {
-  background: var(--fb-white);
-  padding: .8rem;
+  background: var(--background-card);
+  padding: var(--spacing-lg);
   border-bottom: 1px solid var(--border-color);
 }
 
 .groupInfo {
   display: flex;
-  /* justify-content: space-between; */
-  gap: 1.5rem;
-  margin-bottom: 1rem;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
 }
 
 .groupBanner {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--border-color);
+  transition: all var(--transition-fast);
+}
+
+.groupBanner:hover {
+  transform: scale(1.05);
+  border-color: var(--ig-blue);
 }
 
 .groupDetails {
   flex: 1;
-  max-width: calc(100% - 120px); /* Account for image width + gap */
+  max-width: calc(100% - 100px);
   overflow: hidden;
 }
 
 .groupDetails h2 {
-  margin: 0 0 0.5rem;
+  margin: 0 0 var(--spacing-xs);
   color: var(--text-primary);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.groupDetails h2:hover {
+  color: var(--ig-blue);
 }
 
 .groupDetails p {
   color: var(--text-secondary);
-  margin: 0 0 0.5rem;
-  font-size: 0.9rem;
-  padding: .3rem;
+  margin: 0 0 var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: normal;
+  font-weight: 400;
 }
 
 .groupMeta {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
 }
 
 .groupMeta i {
-  margin-right: 0.25rem;
+  margin-right: 4px;
+  color: var(--ig-blue);
 }
 
 .groupActions {
   display: flex;
-  gap: 1rem;
+  gap: var(--spacing-sm);
   justify-content: flex-end;
 }
 
-.joinButton {
-  padding: 0.5rem 1rem;
-  background: var(--primary-color);
+.joinBtn {
+  padding: 8px var(--spacing-md);
+  background: var(--ig-blue);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--border-radius-sm);
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: var(--font-size-xs);
+  transition: all var(--transition-fast);
+  box-shadow: var(--box-shadow);
+}
+
+.joinBtn:hover {
+  background-color: #0084E6;
+  transform: translateY(-1px);
+  box-shadow: var(--box-shadow-lg);
 }
 
 .moreButton {
-  padding: 0.5rem;
-  background: var(--background-primary);
+  padding: 8px;
+  background: var(--background-main);
   border: 1px solid var(--border-color);
-  border-radius: 6px;
+  border-radius: var(--border-radius-sm);
   cursor: pointer;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@media  screen and (max-width: 840px) {
+.moreButton:hover {
+  background-color: var(--ig-hover-overlay);
+  color: var(--text-primary);
+  transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 840px) {
   .groupHeader {
-    margin-bottom: 10px;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
   }
 
   .groupSection {
     width: 100%;
+    margin-bottom: var(--spacing-md);
   }
 
-  .leftSidebar, .rightSidebar {
-    display: none;
+  .groupInfo {
+    gap: var(--spacing-md);
+  }
+
+  .groupBanner {
+    width: 64px;
+    height: 64px;
+  }
+
+  .groupDetails h2 {
+    font-size: var(--font-size-base);
+  }
+
+  .groupDetails p {
+    font-size: var(--font-size-xs);
+  }
+
+  .groupMeta {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .groupHeader {
+    padding: var(--spacing-sm);
+  }
+
+  .groupInfo {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-sm);
+  }
+
+  .groupBanner {
+    width: 72px;
+    height: 72px;
+  }
+
+  .groupDetails {
+    max-width: 100%;
+  }
+
+  .groupActions {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .joinBtn {
+    flex: 1;
+    max-width: 200px;
   }
 }

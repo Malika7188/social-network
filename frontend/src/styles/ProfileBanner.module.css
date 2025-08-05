@@ -1,206 +1,371 @@
+/* Instagram-style Profile Banner */
 .bannerContainer {
-    width: 100%;  /* Changed from fixed width */
-    max-width: calc(1920px - 400px);  /* Keep max-width for larger screens */
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-    margin-top: 100px;
-    margin-bottom: 20px;
+  width: 100%;
+  max-width: calc(1200px);
+  background: var(--background-card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin: 0 auto;
+  margin-top: calc(var(--header-height) + var(--spacing-lg));
+  margin-bottom: var(--spacing-lg);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.bannerContainer:hover {
+  box-shadow: var(--box-shadow-lg);
+  transform: translateY(-2px);
+}
+
+.bannerImage {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.bannerImage img {
+  transition: transform var(--transition-slow);
+}
+
+.bannerContainer:hover .bannerImage img {
+  transform: scale(1.02);
+}
+
+.profileInfo {
+  padding: var(--spacing-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+}
+
+.leftSection {
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: flex-end;
+}
+
+.profilePicture {
+  border: 4px solid white;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  width: 120px;
+  height: 120px;
+  box-shadow: var(--box-shadow);
+  transition: all var(--transition-fast);
+  background: var(--ig-gradient-story);
+  padding: 3px;
+}
+
+.profilePicture:hover {
+  transform: scale(1.05);
+  box-shadow: var(--box-shadow-lg);
+}
+
+.profilePicture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--border-radius-sm);
+}
+
+.userInfo {
+  margin-bottom: var(--spacing-sm);
+}
+
+.userInfo h2 {
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: var(--font-size-xxl);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.privacyBadge {
+  margin-bottom: var(--spacing-sm);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px var(--spacing-sm);
+  border-radius: var(--border-radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  gap: 4px;
+}
+
+.private {
+  background-color: rgba(237, 73, 86, 0.1);
+  color: var(--ig-red);
+  border: 1px solid rgba(237, 73, 86, 0.2);
+}
+
+.public {
+  background-color: rgba(0, 200, 81, 0.1);
+  color: var(--ig-green);
+  border: 1px solid rgba(0, 200, 81, 0.2);
+}
+
+.followInfo {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.followers, .following {
+  font-weight: 500;
+}
+
+.avatarGroup {
+  display: flex;
+  align-items: center;
+}
+
+.avatarStack {
+  display: flex;
+  margin-right: var(--spacing-sm);
+}
+
+.avatarWrapper {
+  margin-left: -6px;
+  border: 2px solid white;
+  border-radius: var(--border-radius-full);
+  overflow: hidden;
+  transition: transform var(--transition-fast);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.avatarWrapper:first-child {
+  margin-left: 0;
+}
+
+.avatarWrapper:hover {
+  transform: scale(1.1) translateY(-2px);
+  z-index: 10;
+}
+
+.avatarWrapper img {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+}
+
+.rightSection {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.editButton {
+  padding: 8px var(--spacing-md);
+  background: var(--ig-blue);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-fast);
+  box-shadow: var(--box-shadow);
+}
+
+.editButton:hover {
+  background-color: #0084E6;
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow-lg);
+}
+
+.ellipsisButton {
+  padding: 8px;
+  background: #F8F9FA;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+}
+
+.ellipsisButton:hover {
+  background-color: var(--ig-hover-overlay);
+  color: var(--text-primary);
+  transform: scale(1.1);
+}
+
+/* Instagram-style Profile Navigation */
+.profileNav {
+  border-top: 1px solid var(--border-color);
+  padding: 0 var(--spacing-lg);
+  background-color: var(--background-card);
+}
+
+.profileNav nav {
+  display: flex;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-md) 0;
+  justify-content: center;
+}
+
+.profileNav a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-sm) 0;
+  position: relative;
+  transition: all var(--transition-fast);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.profileNav a:hover {
+  color: var(--text-primary);
+}
+
+.profileNav a.active {
+  color: var(--text-primary);
+}
+
+.profileNav a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -var(--spacing-md);
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--ig-gradient);
+  border-radius: 2px 2px 0 0;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    padding: 0 var(--spacing-md);
   }
-  
-  .bannerImage {
-    position: relative;
-    width: 100%;
-    height: 250px;
-    border-radius: 8px 8px 0 0;
-    overflow: hidden;
+
+  .leftSidebar, .rightSidebar {
+    display: none;
   }
-  
-  .profileInfo {
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    /* margin-top: -60px; */
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding-top: var(--header-height-mobile);
+    padding: 0 var(--spacing-sm);
   }
-  
-  .leftSection {
-    display: flex;
-    gap: 20px;
-    align-items: flex-end;
-  }
-  
-  .profilePicture {
-    border: 4px solid white;
-    border-radius: 16px;
-    overflow: hidden;
-    width: 120px;
-    height: 120px;
-  }
-  
-  .userInfo {
-    margin-bottom: 10px;
-  }
-  
-  .userInfo h2 {
-    margin: 0 0 5px 0;
-    font-size: 24px;
-  }
-  
-  .followInfo {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-  
-  .avatarGroup {
-    display: flex;
-    align-items: center;
-  }
-  
-  .avatarStack {
-    display: flex;
-    margin-right: 10px;
-  }
-  
-  .avatarWrapper {
-    margin-left: -8px;
-    border: 2px solid white;
-    border-radius: 50%;
-    overflow: hidden;
-  }
-  
-  .avatarWrapper:first-child {
-    margin-left: 0;
-  }
-  
-  .rightSection {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .editButton {
-    padding: 8px 16px;
-    background: #0066cc;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  .ellipsisButton {
-    padding:5px 12px;
-    background: #f0f2f5;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  
-  .profileNav {
-    border-top: 1px solid #e4e6eb;
-    padding: 0 20px;
-  }
-  
-  .profileNav nav {
-    display: flex;
-    gap: 10px;
-    padding: 15px 0;
-  }
-  
-  .profileNav a {
-    text-decoration: none;
-    color: #65676b;
-    font-weight: 500;
-    border-right: 2px solid #e4e6eb;
-    padding-right: 10px;
-  }
-  
-  .profileNav a:last-child {
+
+  .bannerContainer {
+    margin-top: var(--header-height-mobile);
+    border-radius: 0;
+    border-left: none;
     border-right: none;
   }
 
-  .profileNav a:hover {
-    color: #1877f2;
+  .bannerImage {
+    height: 160px;
   }
 
-  .privacyBadge {
-    margin-bottom: 10px;
-  }
-
-  .badge {
-    display: inline-flex;
+  .profileInfo {
+    padding: var(--spacing-md);
+    flex-direction: column;
+    gap: var(--spacing-md);
     align-items: center;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 0.8rem;
-    font-weight: 500;
+    text-align: center;
   }
 
-  .private {
-    background-color: #ffefef;
-    color: #e63946;
+  .leftSection {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
   }
 
-  .public {
-    background-color: #e8f5e9;
-    color: #2e7d32;
+  .profilePicture {
+    width: 88px;
+    height: 88px;
   }
 
-  @media screen and (max-width: 840px) {
-    .bannerContainer {
-      width: 100%;
-      margin: 80px auto 20px;
-      border-radius: 0;
-    }
-
-    .bannerImage {
-      height: 200px;  /* Slightly smaller for mobile */
-      border-radius: 0;
-    }
-
-    .profileInfo {
-      padding: 15px;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .userInfo h2 {
-       font-size: 14px;
-    }
-
-    .followInfo {
-      gap: 5px;
-      align-items: center;
-    }
-
-    .rightSection {
-      width: 100%;
-      justify-content: right;
-    }
-
-    .profileNav a {
-      font-size: .8rem;
-    }
-
-    .followInfo {
-      font-size: .8rem;
-    }
-
-    .profilePicture {
-      width: 80px;
-      height: 80px;
-    }
-
-    .profilePicture img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+  .userInfo h2 {
+    font-size: var(--font-size-xl);
   }
 
-  @media screen and (max-width: 540px) {
-    .bannerContainer {
-      margin: 140px auto 20px;
-    }
+  .followInfo {
+    justify-content: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-xs);
   }
+
+  .rightSection {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .profileNav {
+    padding: 0 var(--spacing-md);
+  }
+
+  .profileNav nav {
+    gap: var(--spacing-lg);
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .profileNav nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .profileNav a {
+    font-size: var(--font-size-xs);
+    white-space: nowrap;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .bannerContainer {
+    margin-top: var(--header-height-mobile);
+  }
+
+  .bannerImage {
+    height: 140px;
+  }
+
+  .profilePicture {
+    width: 72px;
+    height: 72px;
+  }
+
+  .userInfo h2 {
+    font-size: var(--font-size-lg);
+  }
+
+  .profileNav nav {
+    gap: var(--spacing-md);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 0 var(--spacing-xs);
+  }
+
+  .profileInfo {
+    padding: var(--spacing-sm);
+  }
+
+  .profileNav {
+    padding: 0 var(--spacing-sm);
+  }
+
+  .profileNav a {
+    font-size: 10px;
+  }
+}

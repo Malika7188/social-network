@@ -1,63 +1,96 @@
+/* Instagram-style Edit Profile Modal */
 .modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.65);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  backdrop-filter: blur(8px);
 }
 
 .modalContent {
-  background: white;
-  border-radius: 8px;
+  background: var(--background-card);
+  border-radius: var(--border-radius);
   width: 90%;
   max-width: 800px;
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
+  box-shadow: var(--box-shadow-xl);
+  border: 1px solid var(--border-color);
+  animation: ig-scale-in 0.3s ease-out;
 }
 
 .modalHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 24px;
-  border-bottom: 1px solid #e4e6eb;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  background: var(--background-card);
+  z-index: 1;
 }
 
 .modalHeader h2 {
-  font-size: 20px;
+  font-size: var(--font-size-xl);
   font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.02em;
 }
 
 .closeButton {
   background: none;
   border: none;
-  font-size: 20px;
-  color: #65676b;
+  font-size: 1.5rem;
+  color: var(--text-secondary);
   cursor: pointer;
-  padding: 8px;
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-full);
+  transition: all var(--transition-fast);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:hover {
+  background-color: var(--ig-hover-overlay);
+  color: var(--text-primary);
+  transform: scale(1.1);
 }
 
 .form {
-  padding: 24px;
+  padding: var(--spacing-xl);
 }
 
+/* Instagram-style Image Upload Section */
 .imageSection {
   position: relative;
-  margin-bottom: 60px;
+  margin-bottom: calc(var(--spacing-xxl) + var(--spacing-lg));
 }
 
 .bannerUpload {
   position: relative;
   height: 200px;
-  background: #f0f2f5;
-  border-radius: 8px;
+  background: #F8F9FA;
+  border-radius: var(--border-radius);
   overflow: hidden;
+  border: 2px dashed var(--border-color);
+  transition: all var(--transition-fast);
+}
+
+.bannerUpload:hover {
+  border-color: var(--ig-blue);
+  background-color: rgba(0, 149, 246, 0.02);
 }
 
 .bannerPreview {
@@ -68,14 +101,21 @@
 
 .profileImageUpload {
   position: absolute;
-  bottom: -40px;
-  left: 24px;
+  bottom: -60px;
+  left: var(--spacing-xl);
   width: 120px;
   height: 120px;
-  border-radius: 50%;
+  border-radius: var(--border-radius-full);
   border: 4px solid white;
   overflow: hidden;
-  background: #f0f2f5;
+  background: #F8F9FA;
+  box-shadow: var(--box-shadow);
+  transition: all var(--transition-fast);
+}
+
+.profileImageUpload:hover {
+  transform: scale(1.05);
+  box-shadow: var(--box-shadow-lg);
 }
 
 .profilePreview {
@@ -96,7 +136,8 @@
   color: white;
   cursor: pointer;
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: opacity var(--transition-fast);
+  border-radius: inherit;
 }
 
 .imageUploadLabel:hover,
@@ -104,117 +145,107 @@
   opacity: 1;
 }
 
+.imageUploadLabel i,
+.profileImageLabel i {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+.imageUploadLabel span {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+/* Instagram-style Form Fields */
 .formFields {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: var(--spacing-xl);
 }
 
 .fieldGroup {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--spacing-md);
 }
 
 .fieldGroup h3 {
-  font-size: 16px;
+  font-size: var(--font-size-lg);
   font-weight: 600;
-  color: #050505;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.02em;
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--ig-blue);
+  display: inline-block;
+  background: var(--ig-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--spacing-sm);
 }
 
 .field label {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  color: #65676b;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.field label i {
+  color: var(--ig-blue);
+  width: 16px;
 }
 
 .field input,
 .field textarea,
 .field select {
-  padding: 12px;
-  border: 1px solid #e4e6eb;
-  border-radius: 6px;
-  font-size: 14px;
+  padding: 12px var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+  background-color: #F8F9FA;
+  transition: all var(--transition-fast);
+  font-weight: 400;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--ig-blue);
+  box-shadow: 0 0 0 2px rgba(0, 149, 246, 0.2);
+  background-color: var(--background-card);
+  transform: translateY(-1px);
 }
 
 .field textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 80px;
+  line-height: 1.5;
 }
 
-.formActions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 24px;
-  padding-top: 16px;
-  border-top: 1px solid #e4e6eb;
+.charCount {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  text-align: right;
+  margin-top: var(--spacing-xs);
 }
 
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.tag {
-  background-color: #e0e0e0;
-  padding: 4px 8px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.tag button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #666;
-}
-
-.cancelButton,
-.saveButton {
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.cancelButton {
-  background: #e4e6eb;
-  border: none;
-  color: #050505;
-}
-
-.saveButton {
-  background: #1877f2;
-  border: none;
-  color: white;
-}
-
-.cancelButton:hover {
-  background: #d8dadf;
-}
-
-.saveButton:hover {
-  background: #166fe5;
-}
-
+/* Instagram-style Privacy Toggle */
 .privacyToggle {
   display: flex;
   align-items: center;
-  margin: 8px 0;
+  margin: var(--spacing-sm) 0;
 }
 
 .toggleLabel {
@@ -222,21 +253,22 @@
   align-items: center;
   cursor: pointer;
   user-select: none;
+  gap: var(--spacing-md);
 }
 
 .toggleLabel input[type="checkbox"] {
   appearance: none;
   width: 50px;
   height: 24px;
-  background-color: #ccc;
+  background-color: var(--ig-grey);
   border-radius: 12px;
   position: relative;
-  margin-right: 12px;
-  transition: background-color 0.3s;
+  transition: background-color var(--transition-fast);
+  border: none;
 }
 
 .toggleLabel input[type="checkbox"]:checked {
-  background-color: #4CAF50;
+  background: var(--ig-gradient);
 }
 
 .toggleLabel input[type="checkbox"]::before {
@@ -244,11 +276,12 @@
   position: absolute;
   width: 20px;
   height: 20px;
-  border-radius: 50%;
+  border-radius: var(--border-radius-full);
   background-color: white;
   top: 2px;
   left: 2px;
-  transition: transform 0.3s;
+  transition: transform var(--transition-fast);
+  box-shadow: var(--box-shadow);
 }
 
 .toggleLabel input[type="checkbox"]:checked::before {
@@ -256,10 +289,150 @@
 }
 
 .toggleText {
-  font-size: 0.9rem;
-  color: #666;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  font-weight: 500;
 }
 
+/* Instagram-style Skills Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.tag {
+  background: linear-gradient(135deg, rgba(64, 93, 230, 0.1) 0%, rgba(131, 58, 180, 0.1) 100%);
+  padding: 4px var(--spacing-sm);
+  border-radius: var(--border-radius-full);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-xs);
+  color: var(--text-primary);
+  font-weight: 500;
+  border: 1px solid rgba(64, 93, 230, 0.2);
+  transition: all var(--transition-fast);
+}
+
+.tag:hover {
+  background: linear-gradient(135deg, rgba(64, 93, 230, 0.15) 0%, rgba(131, 58, 180, 0.15) 100%);
+  transform: translateY(-1px);
+}
+
+.tag button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: var(--font-size-xs);
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--border-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.tag button:hover {
+  background-color: rgba(237, 73, 86, 0.1);
+  color: var(--ig-red);
+  transform: scale(1.1);
+}
+
+.noTagsMessage {
+  color: var(--text-secondary);
+  font-size: var(--font-size-xs);
+  font-style: italic;
+  padding: var(--spacing-sm);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: var(--border-radius-sm);
+}
+
+/* Instagram-style Form Actions */
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
+}
+
+.cancelButton,
+.saveButton {
+  padding: 10px var(--spacing-lg);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.cancelButton {
+  backgroun: var(--ig-light-grey);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.cancelButton:hover {
+  background: var(--ig-hover-overlay);
+  transform: translateY(-1px);
+}
+
+.saveButton {
+  background: var(--ig-button-gradient);
+  border: none;
+  color: white;
+  box-shadow: var(--box-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.saveButton:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow-lg);
+}
+
+.saveButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.saveButton:hover::before {
+  left: 100%;
+}
+
+.saveButton:disabled {
+  background: var(--ig-grey);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.errorMessage {
+  color: var(--error-color);
+  background-color: rgba(237, 73, 86, 0.08);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+  border: 1px solid rgba(237, 73, 86, 0.15);
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .modalContent {
     width: 100%;
@@ -268,7 +441,64 @@
     border-radius: 0;
   }
 
+  .modalHeader {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  .form {
+    padding: var(--spacing-lg);
+  }
+
   .imageSection {
-    margin-bottom: 80px;
+    margin-bottom: calc(var(--spacing-xl) + var(--spacing-lg));
+  }
+
+  .bannerUpload {
+    height: 160px;
+  }
+
+  .profileImageUpload {
+    width: 100px;
+    height: 100px;
+    bottom: -50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modalHeader {
+    padding: var(--spacing-md);
+  }
+
+  .modalHeader h2 {
+    font-size: var(--font-size-lg);
+  }
+
+  .form {
+    padding: var(--spacing-md);
+  }
+
+  .fieldGroup h3 {
+    font-size: var(--font-size-base);
+  }
+
+  .formActions {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .cancelButton,
+  .saveButton {
+    width: 100%;
+  }
+
+  .bannerUpload {
+    height: 140px;
+  }
+
+  .profileImageUpload {
+    width: 80px;
+    height: 80px;
+    bottom: -40px;
+    left: var(--spacing-md);
   }
 }

@@ -1,3 +1,4 @@
+/* Instagram-style Notification Dropdown */
 .container {
   position: relative;
   display: inline-block;
@@ -7,166 +8,131 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 8px;
-  color: #666;
+  padding: var(--spacing-sm);
+  color: var(--text-primary);
   position: relative;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-fast);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .iconButton:hover {
-  color: #333;
+  background-color: var(--ig-hover-overlay);
+  transform: scale(1.1);
 }
 
 .active {
-  color: #007bff;
+  color: var(--ig-blue);
+  background-color: var(--ig-active-overlay);
 }
 
 .badge {
   position: absolute;
-  top: 0;
-  right: 0;
-  background-color: #ff4444;
+  top: 2px;
+  right: 2px;
+  background: var(--ig-gradient);
   color: white;
-  border-radius: 50%;
+  border-radius: var(--border-radius-full);
   padding: 2px 6px;
-  font-size: 0.7rem;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
   min-width: 18px;
   text-align: center;
+  box-shadow: var(--box-shadow);
+  animation: ig-pulse 2s ease-in-out infinite;
 }
 
 .dropdown {
   position: absolute;
   right: 0;
-  top: 100%;
-  width: 320px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  top: calc(100% + 8px);
+  width: 360px;
+  background: var(--background-card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-xl);
   z-index: 1000;
-  margin-top: 8px;
-}
-
-.title {
-  padding: 12px 16px;
-  margin: 0;
-  border-bottom: 1px solid #eee;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.notificationList {
-  max-height: 400px;
-  overflow-y: auto;
-}
-
-.notificationItem {
-  padding: 12px 16px;
-  border-bottom: 1px solid #eee;
-  transition: background-color 0.2s;
-}
-
-.notificationItem:hover {
-  background-color: #f8f9fa;
-}
-
-.notification {
+  border: 1px solid var(--border-color);
+  animation: ig-scale-in 0.2s ease-out;
+  max-height: 480px;
+  overflow: hidden;
   display: flex;
-  gap: 8px;
+  flex-direction: column;
 }
 
-.text {
-  color: #333;
-  font-size: 0.9rem;
-}
-
-.time {
-  color: #888;
-  font-size: 0.8rem;
-  display: block;
-  margin-top: 4px;
-}
-
-.actions {
-  display: flex;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.acceptButton, .declineButton {
-  padding: 4px 12px;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  font-size: 0.8rem;
-}
-
-.acceptButton {
-  background-color: #28a745;
-  color: white;
-}
-
-.acceptButton:hover {
-  background-color: #218838;
-}
-
-.declineButton {
-  background-color: #dc3545;
-  color: white;
-}
-
-.declineButton:hover {
-  background-color: #c82333;
-}
-
-.emptyState {
-  padding: 24px 16px;
-  text-align: center;
-  color: #666;
-  font-size: 0.9rem;
-} 
-.loadingState {
-  padding: 10px;
-  text-align: center;
-  color: #666;
-}
 .headerActions {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 16px;
-  border-bottom: 1px solid #eee;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--background-card);
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .headerTitle {
   margin: 0;
-  font-size: 1rem;
+  font-size: var(--font-size-lg);
   font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
 .actionButtons {
   display: flex;
-  gap: 8px;
+  gap: var(--spacing-sm);
 }
 
 .actionButton {
-  padding: 4px 8px;
-  border-radius: 4px;
-  border: 1px solid #ddd;
+  padding: 4px var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--border-color);
   background-color: transparent;
-  color: #666;
-  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-size: var(--font-size-xs);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all var(--transition-fast);
+  font-weight: 500;
 }
 
 .actionButton:hover {
-  background-color: #f0f0f0;
-  color: #333;
+  background-color: var(--ig-hover-overlay);
+  color: var(--text-primary);
+  border-color: var(--ig-grey);
+  transform: translateY(-1px);
+}
+
+.notificationList {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.notificationItem {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.notificationItem:hover {
+  background-color: var(--ig-hover-overlay);
+}
+
+.notificationItem:last-child {
+  border-bottom: none;
 }
 
 .unread {
-  background-color: #f0f7ff;
+  background-color: rgba(0, 149, 246, 0.03);
+  border-left: 3px solid var(--ig-blue);
 }
+
 .notificationHeader {
   display: flex;
   justify-content: space-between;
@@ -174,18 +140,67 @@
   width: 100%;
 }
 
+.notification {
+  display: flex;
+  gap: var(--spacing-md);
+  flex: 1;
+}
+
+.avatarContainer {
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--border-radius-full);
+  object-fit: cover;
+  border: 2px solid transparent;
+  background: var(--ig-gradient-story);
+  padding: 2px;
+  transition: transform var(--transition-fast);
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+}
+
+.textBox {
+  flex: 1;
+  min-width: 0;
+}
+
+.text {
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 400;
+}
+
+.text strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.time {
+  color: var(--text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: 400;
+  margin-top: var(--spacing-xs);
+}
+
 .markReadButton {
-  position: relative;
   background: none;
   border: none;
-  color: #666;
-  font-size: 0.8rem;
-  padding: 2px 6px;
+  color: var(--text-secondary);
+  font-size: var(--font-size-xs);
+  padding: 4px var(--spacing-sm);
   cursor: pointer;
-  border-radius: 4px;
-  margin-left: 8px;
+  border-radius: var(--border-radius-sm);
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: all var(--transition-fast);
+  position: relative;
 }
 
 .notificationItem:hover .markReadButton {
@@ -193,29 +208,27 @@
 }
 
 .markReadButton:hover {
-  background-color: #f0f0f0;
-  color: #333;
+  background-color: var(--ig-hover-overlay);
+  color: var(--text-primary);
+  transform: scale(1.05);
 }
 
-.unread {
-  background-color: #f0f7ff;
-}
 .tooltip {
   visibility: hidden;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
   text-align: center;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.75rem;
+  padding: 4px var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
   white-space: nowrap;
   right: 100%;
   top: 50%;
   transform: translateY(-50%);
-  margin-right: 8px;
+  margin-right: var(--spacing-sm);
   opacity: 0;
-  transition: opacity 0.2s, visibility 0.2s;
+  transition: opacity var(--transition-fast), visibility var(--transition-fast);
 }
 
 .markReadButton:hover .tooltip {
@@ -223,14 +236,109 @@
   opacity: 1;
 }
 
-/* Add a small arrow to the tooltip */
 .tooltip::after {
   content: "";
   position: absolute;
   top: 50%;
   left: 100%;
-  margin-top: -5px;
-  border-width: 5px;
+  margin-top: -4px;
+  border-width: 4px;
   border-style: solid;
   border-color: transparent transparent transparent rgba(0, 0, 0, 0.8);
+}
+
+/* Instagram-style Action Buttons */
+.actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.acceptButton, .declineButton {
+  padding: 6px var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  border: none;
+  cursor: pointer;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  flex: 1;
+}
+
+.acceptButton {
+  background-color: var(--ig-green);
+  color: white;
+  box-shadow: var(--box-shadow);
+}
+
+.acceptButton:hover {
+  background-color: #00B84A;
+  transform: translateY(-1px);
+  box-shadow: var(--box-shadow-lg);
+}
+
+.declineButton {
+  background-color: var(--ig-red);
+  color: white;
+  box-shadow: var(--box-shadow);
+}
+
+.declineButton:hover {
+  background-color: #E8344E;
+  transform: translateY(-1px);
+  box-shadow: var(--box-shadow-lg);
+}
+
+/* Empty and Loading States */
+.emptyState {
+  padding: var(--spacing-xxl) var(--spacing-lg);
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  background: linear-gradient(135deg, rgba(64, 93, 230, 0.02) 0%, rgba(131, 58, 180, 0.02) 100%);
+  border-radius: var(--border-radius-sm);
+  margin: var(--spacing-md);
+}
+
+.loadingState {
+  padding: var(--spacing-lg);
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+.loadingState i {
+  animation: ig-spin 1s linear infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dropdown {
+    width: 320px;
+    right: -20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dropdown {
+    width: 280px;
+    right: -40px;
+  }
+
+  .notificationItem {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .acceptButton, .declineButton {
+    width: 100%;
+  }
 }
