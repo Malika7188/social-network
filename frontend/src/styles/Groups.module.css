@@ -1,117 +1,155 @@
+/* Instagram-style Groups Page */
 .container {
-  padding-top: calc(var(--header-height) + var(--spacing-md));
+  padding-top: calc(var(--header-height) + var(--spacing-lg));
   display: grid;
   grid-template-columns: var(--sidebar-width) 1fr;
-  gap: var(--spacing-md);
+  gap: var(--spacing-lg);
   min-height: 100vh;
-  max-width: calc(1920px - 400px);
+  max-width: 1200px;
   margin: 0 auto;
-}
-
-.main {
-  margin-bottom: 20px;
+  padding: 0 var(--spacing-lg);
 }
 
 .mainContent {
-  width: calc(1340px - 200px);
-  min-width: 0; /* Prevent flex item from overflowing */
-  margin-bottom: 20px;
+  width: 100%;
+  min-width: 0;
+  margin-bottom: var(--spacing-lg);
+  padding-top: 100px; /* Adjusted for header height */
 }
 
-.groupsList {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-}
-
-.groupCard {
-  background: white;
-  border-radius: 8px;
-  padding: 16px;
-}
-
+/* Instagram-style Groups Header */
 .groupsHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  background-color: var(--background-card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--border-color);
 }
 
 .groupsHeader h1 {
-  font-size: 24px;
+  font-size: var(--font-size-xxxl);
   font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  background: var(--ig-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
 }
 
 .createGroupBtn {
-  background-color: #1877f2;
+  background: var(--ig-button-gradient);
   color: white;
   border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
+  padding: 12px var(--spacing-lg);
+  border-radius: var(--border-radius-sm);
   font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
-  transition: background-color 0.2s;
+  gap: var(--spacing-sm);
+  transition: all var(--transition-fast);
+  box-shadow: var(--box-shadow);
+  position: relative;
+  overflow: hidden;
+  font-size: var(--font-size-sm);
 }
 
 .createGroupBtn:hover {
-  background-color: #1666d8;
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow-lg);
 }
 
+.createGroupBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.createGroupBtn:hover::before {
+  left: 100%;
+}
+
+/* Instagram-style Groups Grid */
 .groupsGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
 }
 
 .groupCard {
-  background: white;
-  border-radius: 8px;
+  background: var(--background-card);
+  border-radius: var(--border-radius);
   overflow: hidden;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: var(--box-shadow);
+  transition: all var(--transition-fast);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
 }
 
 .groupCard:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: var(--box-shadow-lg);
 }
 
 .groupBanner {
   height: 140px;
   overflow: hidden;
+  position: relative;
 }
 
 .bannerImg {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.groupCard:hover .bannerImg {
+  transform: scale(1.05);
 }
 
 .groupInfo {
-  padding: 16px;
+  padding: var(--spacing-lg);
   position: relative;
 }
 
 .profilePic {
-  width: 80px;
-  height: 80px;
-  border-radius: 8px;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--border-radius);
   border: 4px solid white;
   position: absolute;
-  top: -40px;
+  top: -36px;
   left: 50%;
   transform: translateX(-50%);
   object-fit: cover;
+  box-shadow: var(--box-shadow);
+  transition: all var(--transition-fast);
+}
+
+.profilePic:hover {
+  transform: translateX(-50%) scale(1.05);
+  box-shadow: var(--box-shadow-lg);
 }
 
 .groupName {
-  margin: 32px 0 8px;
-  font-size: 1.1rem;
+  margin: 36px 0 var(--spacing-sm);
+  font-size: var(--font-size-lg);
   font-weight: 600;
   text-align: center;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
 }
 
 .groupPrivacy {
@@ -119,30 +157,39 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  color: #65676b;
-  font-size: 0.9rem;
-  margin-bottom: 12px;
+  color: var(--text-secondary);
+  font-size: var(--font-size-xs);
+  margin-bottom: var(--spacing-md);
   text-align: center;
+  font-weight: 500;
 }
 
 .memberInfo {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
 }
 
 .memberAvatars {
   display: flex;
+  margin-right: var(--spacing-sm);
 }
 
 .memberAvatar {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--border-radius-full);
   border: 2px solid white;
-  margin-left: -8px;
+  margin-left: -6px;
+  transition: transform var(--transition-fast);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.memberAvatar:hover {
+  transform: scale(1.1) translateY(-2px);
+  z-index: 10;
 }
 
 .memberAvatar:first-child {
@@ -150,108 +197,159 @@
 }
 
 .memberCount {
-  color: #65676b;
-  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
 }
 
 .divider {
   border: none;
-  border-top: 1px solid #e4e6eb;
-  margin: 12px 0;
+  border-top: 1px solid var(--border-color);
+  margin: var(--spacing-md) 0;
+  opacity: 0.5;
 }
 
+/* Instagram-style Group Actions */
 .groupActions {
   display: flex;
-  gap: 8px;
+  gap: var(--spacing-sm);
 }
 
-.inviteBtn, .joinBtn {
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: 500;
+.inviteBtn, .joinBtn, .leaveBtn {
+  padding: 8px var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
-  width: 50%;
+  transition: all var(--transition-fast);
+  flex: 1;
+  border: none;
+  font-size: var(--font-size-xs);
+  text-align: center;
 }
 
 .inviteBtn {
-  background-color: #f0f2f5;
-  border: none;
-  color: #050505;
+  background-color: #23b145;
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 4px;
+  border: 1px solid var(--border-color);
 }
 
 .inviteBtn:hover {
-  background-color: #e4e6eb;
+  background-color: var(--ig-hover-overlay);
+  transform: translateY(-1px);
+  border-color: var(--ig-grey);
 }
 
-.joinBtn , .leaveBtn {
-  background-color: #1877f2;
-  border: none;
+.joinBtn {
+  background-color: var(--ig-blue);
   color: white;
-  flex: 1;
-}
-
-.leaveBtn {
-  background-color: var(--fb-red);
-  color: white;
+  box-shadow: var(--box-shadow);
 }
 
 .joinBtn:hover {
-  background-color: #1666d8;
+  background-color: #0084E6;
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow-lg);
 }
 
-.actionButtons {
+.leaveBtn {
+  background-color: var(--ig-red);
+  color: white;
+  box-shadow: var(--box-shadow);
+}
+
+.leaveBtn:hover {
+  background-color: #E8344E;
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow-lg);
+}
+
+/* Instagram-style Invitation Actions */
+.invitationActions {
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  width: 100%;
 }
 
 .acceptBtn,
 .rejectBtn,
 .pendingBtn {
-  padding: 8px 16px;
-  border-radius: 20px;
+  padding: 8px var(--spacing-md);
+  border-radius: var(--border-radius-sm);
   border: none;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
+  font-size: var(--font-size-xs);
+  width: 100%;
 }
 
 .acceptBtn {
-  background: var(--success-color, #28a745);
+  background: var(--ig-green);
   color: white;
+  box-shadow: var(--box-shadow);
 }
 
 .acceptBtn:hover {
-  background: var(--success-color-dark, #218838);
+  background: #00B84A;
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow-lg);
 }
 
 .rejectBtn {
-  background: var(--danger-color, #dc3545);
+  background: var(--ig-red);
   color: white;
+  box-shadow: var(--box-shadow);
 }
 
 .rejectBtn:hover {
-  background: var(--danger-color-dark, #c82333);
+  background: #E8344E;
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow-lg);
 }
 
 .pendingBtn {
-  background: var(--secondary-color, #6c757d);
+  background: var(--ig-grey);
   color: white;
   cursor: not-allowed;
   opacity: 0.8;
 }
 
-@media  screen and (min-width: 820px) and (max-width: 1100px) {
-  .app-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    padding: 0 var(--spacing-sm);
-    margin-top: var(--header-height-mobile);
+/* Empty State */
+.noGroups {
+  text-align: center;
+  padding: var(--spacing-xxl);
+  background-color: var(--background-card);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--box-shadow);
+}
+
+.noGroups h2 {
+  font-size: var(--font-size-xl);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+}
+
+.noGroups p {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* Responsive Design */
+@media screen and (min-width: 820px) and (max-width: 1100px) {
+  .container {
+    display: block;
+    padding-top: calc(var(--header-height) + var(--spacing-lg));
+    width: 100%;
     max-width: 100%;
+    margin: 0;
+    padding: 0 var(--spacing-md);
   }
 
   .mainContent {
@@ -260,40 +358,20 @@
     padding: 0 var(--spacing-sm);
   }
 
-  .container {
-    display: block;
-    padding-top: calc(var(--header-height) + 10px);
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-  }
-
-  .welcomeSection {
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .leftSidebar, .rightSidebar {
-    display: none;
-    width: 0;
-    height: 0;
-    position: absolute;
-    visibility: hidden;
-  }
-
   .groupsGrid {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: var(--spacing-md);
   }
 }
 
-@media  screen and (min-width: 768px) and (max-width: 820px) {
-  .app-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    padding: 0 var(--spacing-sm);
-    margin-top: var(--header-height-mobile);
+@media screen and (min-width: 768px) and (max-width: 820px) {
+  .container {
+    display: block;
+    padding-top: calc(var(--header-height) + var(--spacing-lg));
+    width: 100%;
     max-width: 100%;
+    margin: 0;
+    padding: 0 var(--spacing-md);
   }
 
   .mainContent {
@@ -302,99 +380,80 @@
     padding: 0 var(--spacing-sm);
   }
 
+  .groupsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+}
+
+@media screen and (max-width: 768px) {
   .container {
     display: block;
-    padding-top: calc(var(--header-height) + 10px);
+    padding-top: var(--header-height-mobile);
     width: 100%;
     max-width: 100%;
     margin: 0;
+    padding: 0 var(--spacing-sm);
   }
 
-  .welcomeSection {
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .leftSidebar, .rightSidebar {
-    display: none;
-    width: 0;
-    height: 0;
-    position: absolute;
-    visibility: hidden;
+  .mainContent {
+    width: 100%;
+    margin: var(--spacing-sm) auto;
+    padding: 0 var(--spacing-sm);
   }
 
   .groupsGrid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .groupsHeader {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .createGroupBtn {
+    width: 100%;
+    justify-content: center;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .app-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    padding: 0 var(--spacing-sm);
-    margin-top: var(--header-height-mobile);
-    max-width: 100%;
+  .container {
+    padding: 0 var(--spacing-xs);
+    padding-top: var(--header-height-mobile);
   }
 
   .mainContent {
-    width: 100%;
-    margin: 10px auto;
-    padding: 0 var(--spacing-sm);
+    padding: 0 var(--spacing-xs);
   }
 
-  .container {
-    display: block;
-    padding-top: var(--header-height-mobile);
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
+  .groupsHeader {
+    padding: var(--spacing-md);
   }
 
-  .welcomeSection {
-    margin-bottom: var(--spacing-sm);
+  .groupsHeader h1 {
+    font-size: var(--font-size-xxl);
   }
 
-  .leftSidebar, .rightSidebar {
-    display: none;
-    width: 0;
-    height: 0;
-    position: absolute;
-    visibility: hidden;
+  .groupCard {
+    margin-bottom: var(--spacing-md);
   }
 
-  .groupsGrid {
-    display: grid;
-    grid-template-columns: 1fr;  /* Changed from repeat(300px, 1fr) to 1fr */
-    gap: 20px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .container {
-    display: block;
-    padding-top: var(--header-height-mobile);
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    gap: var(--spacing-sm);
+  .groupInfo {
+    padding: var(--spacing-md);
   }
 
-  .mainContent {
-    width: 100%;
-    margin: 10px auto;
-    padding: 0 var(--spacing-sm);
+  .profilePic {
+    width: 64px;
+    height: 64px;
+    top: -32px;
   }
 
-  .leftSidebar, .rightSidebar {
-    display: none;
+  .groupName {
+    margin: 32px 0 var(--spacing-sm);
+    font-size: var(--font-size-base);
   }
-
-  .groupsGrid {
-    display: grid;
-    grid-template-columns: 1fr;  /* Changed from repeat(300px, 1fr) to 1fr */
-    gap: 20px;
-  }
-
 }

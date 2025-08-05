@@ -1,57 +1,157 @@
+/* Instagram-style Profile Photos Grid */
 .photosSection {
-    background: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    margin-bottom: 16px;
+  background: var(--background-card);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+  box-shadow: var(--box-shadow);
+  margin-bottom: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+}
+
+.photosSection:hover {
+  box-shadow: var(--box-shadow-lg);
+  transform: translateY(-1px);
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.sectionHeader h3 {
+  font-size: var(--font-size-lg);
+  color: var(--text-primary);
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.seeAll {
+  color: var(--ig-blue);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-fast);
+  padding: 4px var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+}
+
+.seeAll:hover {
+  background-color: var(--ig-hover-overlay);
+  color: var(--ig-purple);
+  transform: translateY(-1px);
+}
+
+.photoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.photoItem {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: 1px solid var(--border-color);
+}
+
+.photoItem:hover {
+  transform: scale(1.02);
+  box-shadow: var(--box-shadow);
+}
+
+.photo {
+  object-fit: cover;
+  transition: all var(--transition-fast);
+}
+
+.photoItem:hover .photo {
+  filter: brightness(1.1);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  backdrop-filter: blur(2px);
+}
+
+.overlay span {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Loading and Error States */
+.loadingContainer,
+.errorContainer,
+.emptyContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 120px;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  background: linear-gradient(135deg, rgba(64, 93, 230, 0.02) 0%, rgba(131, 58, 180, 0.02) 100%);
+  border-radius: var(--border-radius-sm);
+  border: 1px dashed var(--border-color);
+}
+
+.loadingContainer i {
+  animation: ig-spin 1s linear infinite;
+  margin-right: var(--spacing-sm);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .photosSection {
+    padding: var(--spacing-md);
   }
-  
-  .sectionHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-  
+
   .sectionHeader h3 {
-    font-size: 20px;
-    color: #1a1a1a;
+    font-size: var(--font-size-base);
   }
-  
-  .seeAll {
-    color: #1877f2;
-    text-decoration: none;
-    font-weight: 500;
-  }
-  
+
   .photoGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    gap: 2px;
   }
-  
-  .photoItem {
-    position: relative;
-    aspect-ratio: 1;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  .photo {
-    object-fit: cover;
-  }
-  
+
   .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: var(--font-size-base);
   }
+}
+
+@media (max-width: 480px) {
+  .photosSection {
+    padding: var(--spacing-sm);
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    align-items: flex-start;
+  }
+
+  .photoGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+
+  .overlay {
+    font-size: var(--font-size-sm);
+  }
+}

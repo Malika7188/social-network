@@ -1,6 +1,6 @@
-/* Page-specific CSS - Auth and messenger page styles */
+/* Instagram-inspired Desktop App - Page-specific CSS */
 
-/* Authentication Container */
+/* Authentication Container - Instagram style */
 .auth-container {
     display: flex;
     flex-direction: column;
@@ -8,8 +8,9 @@
     align-items: center;
     min-height: 100vh;
     padding: var(--spacing-lg);
-  background: var(--ig-gradient);
+    background: var(--ig-gradient);
     position: relative;
+    overflow: hidden;
 }
 
 .auth-container::before {
@@ -19,12 +20,12 @@
     left: 0;
     right: 0;
     bottom: 0;
-  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-              radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
     opacity: 0.5;
 }
 
-.auth-container>* {
+.auth-container > * {
     position: relative;
     z-index: 1;
 }
@@ -33,11 +34,12 @@
     background-color: var(--background-card);
     padding: var(--spacing-xl);
     border-radius: var(--border-radius-lg);
-  box-shadow: var(--box-shadow-lg);
+    box-shadow: var(--box-shadow-lg);
     width: 100%;
     max-width: 400px;
     backdrop-filter: blur(10px);
-  border: 1px solid var(--border-color);
+    border: 1px solid var(--border-color);
+    animation: modalSlideIn 0.4s ease-out;
 }
 
 .auth-card h1 {
@@ -46,6 +48,7 @@
     margin-bottom: var(--spacing-lg);
     text-align: center;
     font-weight: 600;
+    letter-spacing: -0.02em;
 }
 
 .auth-form {
@@ -55,28 +58,38 @@
 }
 
 .auth-form input {
-    padding: var(--spacing-md);
-    border: 2px solid var(--border-color);
-  border-radius: var(--border-radius-sm);
+    padding: 12px var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
     font-family: inherit;
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-sm);
     transition: var(--transition-normal);
+    background-color: #F8F9FA;
+    font-weight: 400;
 }
 
 .auth-form input:focus {
-  border-color: var(--secondary-color);
-  box-shadow: 0 0 0 3px rgba(0, 149, 246, 0.1);
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(0, 149, 246, 0.2);
     background-color: var(--background-card);
+    outline: none;
+    transform: translateY(-1px);
+}
+
+.auth-form input::placeholder {
+    color: var(--text-secondary);
+    font-weight: 400;
 }
 
 .auth-form button {
-    padding: var(--spacing-md);
-  border-radius: var(--border-radius-sm);
+    padding: 12px var(--spacing-md);
+    border-radius: var(--border-radius-sm);
     font-weight: 600;
     margin-top: var(--spacing-sm);
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-sm);
     position: relative;
     overflow: hidden;
+    transition: all var(--transition-fast);
 }
 
 .auth-form button::before {
@@ -99,10 +112,11 @@
     margin-top: var(--spacing-lg);
     color: var(--text-secondary);
     font-size: var(--font-size-sm);
+    font-weight: 400;
 }
 
 .auth-link a {
-  color: var(--secondary-color);
+    color: var(--secondary-color);
     font-weight: 600;
     text-decoration: none;
     transition: var(--transition-fast);
@@ -110,22 +124,23 @@
 
 .auth-link a:hover {
     text-decoration: underline;
-  color: var(--primary-color);
+    color: var(--primary-color);
 }
 
-/* Error Message */
+/* Error Message - Instagram style */
 .error-message {
     color: var(--error-color);
-  background-color: rgba(237, 73, 86, 0.1);
+    background-color: rgba(237, 73, 86, 0.1);
     padding: var(--spacing-sm);
-  border-radius: var(--border-radius-sm);
+    border-radius: var(--border-radius-sm);
     margin-bottom: var(--spacing-md);
     text-align: center;
     font-size: var(--font-size-sm);
-  border: 1px solid rgba(237, 73, 86, 0.2);
+    border: 1px solid rgba(237, 73, 86, 0.2);
+    font-weight: 500;
 }
 
-/* Messenger Container */
+/* Messenger Container - Instagram style */
 .messenger-container {
     width: 100%;
     height: 100vh;
@@ -175,6 +190,7 @@
     text-align: center;
     max-width: 400px;
     box-shadow: var(--box-shadow-lg);
+    border: 1px solid var(--border-color);
 }
 
 .offline-content i {
@@ -186,11 +202,13 @@
 .offline-content h2 {
     margin-bottom: var(--spacing-sm);
     color: var(--text-primary);
+    font-weight: 600;
 }
 
 .offline-content p {
     color: var(--text-secondary);
     margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-sm);
 }
 
 .offline-actions {
@@ -199,7 +217,7 @@
     justify-content: center;
 }
 
-/* Search Results */
+/* Search Results - Instagram style */
 .search-results {
     position: absolute;
     top: 100%;
@@ -208,8 +226,8 @@
     background-color: var(--background-card);
     border: 1px solid var(--border-color);
     border-top: none;
-  border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
-  box-shadow: var(--box-shadow-lg);
+    border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+    box-shadow: var(--box-shadow-lg);
     max-height: 300px;
     overflow-y: auto;
     z-index: 100;
@@ -231,12 +249,12 @@
 }
 
 .search-highlight {
-  background-color: rgba(228, 64, 95, 0.2);
+    background-color: rgba(228, 64, 95, 0.2);
     padding: 1px 2px;
-  border-radius: var(--border-radius-sm);
+    border-radius: var(--border-radius-sm);
 }
 
-/* Settings Panel */
+/* Settings Panel - Instagram style */
 .settings-panel {
     position: fixed;
     top: 0;
@@ -245,7 +263,7 @@
     height: 100%;
     background-color: var(--background-card);
     border-left: 1px solid var(--border-color);
-  box-shadow: var(--box-shadow-lg);
+    box-shadow: var(--box-shadow-lg);
     transition: right 0.3s ease;
     z-index: 1000;
     overflow-y: auto;
@@ -267,6 +285,7 @@
     margin: 0;
     font-size: var(--font-size-lg);
     font-weight: 600;
+    color: var(--text-primary);
 }
 
 .settings-content {
@@ -302,19 +321,19 @@
     cursor: pointer;
 }
 
-/* Toggle Switch */
+/* Instagram-style Toggle Switch */
 .toggle-switch {
     position: relative;
-    width: 50px;
+    width: 44px;
     height: 24px;
     background-color: var(--text-muted);
-  border-radius: var(--border-radius-lg);
+    border-radius: var(--border-radius-lg);
     cursor: pointer;
     transition: var(--transition-normal);
 }
 
 .toggle-switch.active {
-  background-color: var(--secondary-color);
+    background: var(--ig-gradient);
 }
 
 .toggle-switch::before {
@@ -325,12 +344,13 @@
     width: 20px;
     height: 20px;
     background-color: var(--background-card);
-  border-radius: var(--border-radius-full);
+    border-radius: var(--border-radius-full);
     transition: var(--transition-normal);
+    box-shadow: var(--box-shadow);
 }
 
 .toggle-switch.active::before {
-    transform: translateX(26px);
+    transform: translateX(20px);
 }
 
 /* Profile Section */
@@ -340,13 +360,15 @@
     gap: var(--spacing-md);
     padding: var(--spacing-lg);
     border-bottom: 1px solid var(--border-color);
-  background: linear-gradient(135deg, rgba(228, 64, 95, 0.1) 0%, rgba(228, 64, 95, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(228, 64, 95, 0.1) 0%, rgba(228, 64, 95, 0.05) 100%);
 }
 
 .profile-avatar {
-    width: 60px;
-    height: 60px;
-  border: 3px solid var(--primary-color);
+    width: 56px;
+    height: 56px;
+    border: 3px solid var(--primary-color);
+    background: var(--ig-gradient);
+    padding: 2px;
 }
 
 .profile-info h3 {
@@ -354,6 +376,7 @@
     font-size: var(--font-size-lg);
     font-weight: 600;
     color: var(--text-primary);
+    letter-spacing: -0.01em;
 }
 
 .profile-info p {
@@ -383,7 +406,6 @@
     from {
         opacity: 0;
     }
-
     to {
         opacity: 1;
     }
@@ -393,7 +415,6 @@
     from {
         transform: translateX(100%);
     }
-
     to {
         transform: translateX(0);
     }
@@ -403,7 +424,6 @@
     from {
         transform: translateX(-100%);
     }
-
     to {
         transform: translateX(0);
     }
@@ -414,40 +434,37 @@
         opacity: 0;
         transform: scale(0.3);
     }
-
     50% {
         opacity: 1;
         transform: scale(1.05);
     }
-
     70% {
         transform: scale(0.9);
     }
-
     100% {
         opacity: 1;
         transform: scale(1);
     }
 }
 
-/* Dark mode support (for future implementation) */
+/* Dark mode support (Instagram style) */
 @media (prefers-color-scheme: dark) {
     :root {
-        --background-main: #18191a;
-        --background-card: #242526;
+        --background-main: #000000;
+        --background-card: #262626;
         --background-hover: rgba(255, 255, 255, 0.1);
-        --text-primary: #e4e6ea;
-        --text-secondary: #b0b3b8;
-        --text-muted: #8a8d91;
-        --border-color: #3a3b3c;
+        --text-primary: #FFFFFF;
+        --text-secondary: #8E8E8E;
+        --text-muted: #737373;
+        --border-color: #363636;
     }
 
     .auth-container {
-    background: var(--ig-gradient);
+        background: var(--ig-gradient);
     }
 
     .auth-card {
-        background-color: rgba(36, 37, 38, 0.95);
+        background-color: rgba(38, 38, 38, 0.95);
         border: 1px solid rgba(255, 255, 255, 0.1);
     }
 }
@@ -487,7 +504,6 @@
 
 /* Print styles */
 @media print {
-
     .messenger-header,
     .conversations-sidebar,
     .message-input-form,
@@ -501,5 +517,43 @@
 
     .message-item {
         max-width: 100% !important;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .auth-container {
+        padding: var(--spacing-md);
+    }
+
+    .auth-card {
+        padding: var(--spacing-lg);
+        max-width: 100%;
+    }
+
+    .auth-card h1 {
+        font-size: var(--font-size-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-container {
+        padding: var(--spacing-sm);
+    }
+
+    .auth-card {
+        padding: var(--spacing-md);
+    }
+
+    .auth-form {
+        gap: var(--spacing-sm);
+    }
+
+    .auth-form input {
+        padding: 10px var(--spacing-sm);
+    }
+
+    .auth-form button {
+        padding: 10px var(--spacing-sm);
     }
 }

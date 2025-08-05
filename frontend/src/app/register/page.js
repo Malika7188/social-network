@@ -1,5 +1,5 @@
 "use client";
-
+// This file is part of the Vibes project, an open-source social media platform.
 import styles from "@/styles/auth.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

@@ -8,6 +8,7 @@ import ProfileDropdown from './ProfileDropdown';
 import SearchBar from './SearchBar';
 import { useAuth } from '@/context/authcontext';
 import NotificationDropdown from './NotificationDropdown';
+import { User, Store, Home, Paperclip, Bell, MessageCircle } from 'lucide-react';
 
 export default function Header() {
   const router = useRouter();
@@ -32,25 +33,29 @@ export default function Header() {
             href="/home" 
             className={`${styles.iconLink} ${pathname === '/home' ? styles.active : ''}`}
           >
-            <i className="fas fa-home"></i>
+            {/* <i className="fas fa-home"></i> */}
+            <Home />
           </Link>
           <Link 
             href="/group-feeds" 
             className={`${styles.iconLink} ${pathname === '/group-feeds' ? styles.active : ''}`}
           >
-            <i className="fas fa-newspaper"></i>
+            {/* <i className="fas fa-newspaper"></i> */}
+            <Paperclip />
           </Link>
           <Link 
             href="/profile" 
             className={`${styles.iconLink} ${pathname.startsWith('/profile') ? styles.active : ''}`}
           >
-            <i className="fas fa-user"></i>
+            {/* <i className="fas fa-user"></i> */}
+            <User />
           </Link>
           <Link 
             href="/messages" 
             className={`${styles.iconLink} ${pathname === '/messages' ? styles.active : ''}`}
           >
-            <i className="fas fa-envelope"></i>
+            {/* <i className="fas fa-envelope"></i> */}
+            <MessageCircle />
           </Link>
           <NotificationDropdown />
           <ProfileDropdown />

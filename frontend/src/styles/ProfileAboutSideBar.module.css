@@ -1,59 +1,166 @@
+/* Instagram-style Profile About Sidebar */
 .aboutSection {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+  background: var(--background-card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+}
+
+.aboutSection:hover {
+  box-shadow: var(--box-shadow-lg);
+  transform: translateY(-1px);
+}
+
+.about, .info {
+  margin-bottom: var(--spacing-xl);
+}
+
+.about h3, .info h3 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-md);
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.bio {
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  padding: var(--spacing-md);
+  background: linear-gradient(135deg, rgba(64, 93, 230, 0.02) 0%, rgba(131, 58, 180, 0.02) 100%);
+  border-radius: var(--border-radius-sm);
+  border-left: 3px solid var(--ig-blue);
+}
+
+.editButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: #F8F9FA;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  padding: 8px var(--spacing-md);
+  cursor: pointer;
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  font-size: var(--font-size-sm);
+}
+
+.editButton:hover {
+  background: var(--ig-hover-overlay);
+  border-color: var(--ig-grey);
+  transform: translateY(-1px);
+}
+
+.editButton i {
+  color: var(--ig-blue);
+  transition: transform var(--transition-fast);
+}
+
+.editButton:hover i {
+  transform: scale(1.1);
+}
+
+.infoList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.infoList li {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.infoList li:hover {
+  background-color: var(--ig-hover-overlay);
+  color: var(--text-primary);
+  transform: translateX(4px);
+}
+
+.icon {
+  font-size: 1.1rem;
+  color: var(--ig-blue);
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.infoList li:hover .icon {
+  transform: scale(1.1);
+}
+
+.infoList li span {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* No Data State */
+.noData {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--text-secondary);
+  background: linear-gradient(135deg, rgba(64, 93, 230, 0.02) 0%, rgba(131, 58, 180, 0.02) 100%);
+  border-radius: var(--border-radius-sm);
+  border: 1px dashed var(--border-color);
+}
+
+.noData p {
+  font-size: var(--font-size-sm);
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .aboutSection {
+    padding: var(--spacing-md);
   }
-  
-  .about, .info {
-    margin-bottom: 24px;
-  }
-  
+
   .about h3, .info h3 {
-    font-size: 20px;
-    margin-bottom: 16px;
-    color: #1a1a1a;
+    font-size: var(--font-size-base);
   }
-  
+
   .bio {
-    color: #4b4f56;
-    line-height: 1.5;
-    margin-bottom: 16px;
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-sm);
   }
-  
-  .editButton {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: #f0f2f5;
-    border: none;
-    border-radius: 6px;
-    padding: 8px 12px;
-    cursor: pointer;
-    color: #050505;
-    font-weight: 500;
-    transition: background-color 0.2s;
-  }
-  
-  .editButton:hover {
-    background: #e4e6eb;
-  }
-  
-  .infoList {
-    list-style: none;
-    padding: 0;
-  }
-  
+
   .infoList li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-    color: #4b4f56;
+    font-size: var(--font-size-xs);
+    gap: var(--spacing-sm);
   }
-  
+
   .icon {
-    font-size: 20px;
-    color: #65676b;
-    flex-shrink: 0;
+    font-size: 1rem;
+    width: 16px;
   }
+}
+
+@media (max-width: 480px) {
+  .aboutSection {
+    padding: var(--spacing-sm);
+  }
+
+  .about, .info {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .editButton {
+    padding: 6px var(--spacing-sm);
+    font-size: var(--font-size-xs);
+  }
+}

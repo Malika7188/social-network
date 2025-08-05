@@ -1,12 +1,14 @@
+/* Instagram-style Authentication Pages */
 .authContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding-inline: var(--spacing-lg);
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: var(--spacing-lg);
+  background: var(--ig-gradient-subtle);
   position: relative;
+  overflow: hidden;
 }
 
 .authContainer::before {
@@ -16,8 +18,21 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--ig-gradient);
-  opacity: 0.1;
+  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+  opacity: 0.8;
+  z-index: 0;
+}
+
+.authContainer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent, rgba(64, 93, 230, 0.1), transparent);
+  animation: ig-rotate 20s linear infinite;
   z-index: 0;
 }
 
@@ -26,36 +41,33 @@
   z-index: 1;
 }
 
-.fieldError {
-  color: red;
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
-  display: block;
-}
-
 .authCard {
   background-color: var(--background-card);
-  padding: var(--spacing-xl);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--box-shadow-lg);
+  padding: var(--spacing-xxl);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-xl);
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   border: 1px solid var(--border-color);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.95);
+  animation: ig-scale-in 0.5s ease-out;
 }
 
 .authCard h1 {
-  color: var(--text-primary);
-  font-size: var(--font-size-xxl);
-  margin-bottom: var(--spacing-sm);
+  color: black;
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-lg);
   text-align: center;
   font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .authCard p {
   text-align: center;
   font-weight: 400;
   color: var(--text-secondary);
+  font-size: var(--font-size-sm);
 }
 
 .authForm {
@@ -71,9 +83,11 @@
 }
 
 .formGroup label {
-  color: var(--text-secondary);
-  font-size: var(--font-size-sm);
-  font-weight: 500;
+  color: rgba(23, 13, 13, 0.705);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--spacing-xs);
 }
 
 .nameGroup {
@@ -84,12 +98,15 @@
 
 .authForm input,
 .authForm textarea {
-  padding: var(--spacing-md);
+  padding: 12px var(--spacing-md);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
   font-family: inherit;
-  font-size: var(--font-size-base);
-  transition: all 0.2s ease;
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-fast);
+  font-weight: 400;
+  background-color: #eeeeee;
+  color: black;
 }
 
 .authForm input:focus,
@@ -97,52 +114,91 @@
   border-color: var(--ig-blue);
   box-shadow: 0 0 0 2px rgba(0, 149, 246, 0.2);
   outline: none;
+  background-color: whitesmoke;
+  transform: translateY(-1px);
+}
+
+.authForm input::placeholder,
+.authForm textarea::placeholder {
+  color: var(--text-secondary);
+  font-weight: 400;
 }
 
 .authForm input[type="file"] {
-  padding: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background-color: var(--background-card);
+  border: 1px dashed var(--border-color);
+}
+
+.authForm input[type="file"]:hover {
+  border-color: var(--ig-blue);
+  background-color: rgba(0, 149, 246, 0.02);
 }
 
 .authForm textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 80px;
+  line-height: 1.5;
 }
 
 .authForm button {
-  padding: var(--spacing-md);
+  padding: 12px var(--spacing-md);
   border-radius: var(--border-radius-sm);
   font-weight: 600;
   margin-top: var(--spacing-md);
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+  font-size: var(--font-size-sm);
+}
+
+.authForm button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.authForm button:hover::before {
+  left: 100%;
 }
 
 .authLink {
   text-align: center;
   margin-top: var(--spacing-lg);
   color: var(--text-secondary);
+  font-weight: 400;
+  font-size: var(--font-size-sm);
 }
 
 .authLink a {
   color: var(--ig-blue);
   font-weight: 600;
-  transition: color 0.2s ease;
+  transition: all var(--transition-fast);
 }
 
 .authLink a:hover {
-  color: var(--ig-secondary);
+  color: var(--ig-purple);
+  transform: translateY(-1px);
 }
 
 h1.brandName {
   font-family: var(--font-brand);
-  font-size: 4rem;
-  font-weight: 700;
+  font-size: 3.5rem;
+  font-weight: 900;
   background: var(--ig-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-align: center;
-  margin-bottom: var(--spacing-sm);
-  letter-spacing: -0.02em;
+  margin-bottom: var(--spacing-lg);
+  letter-spacing: -0.08em;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: ig-fade-in 0.8s ease-out;
 }
 
 .passwordContainer {
@@ -152,29 +208,30 @@ h1.brandName {
 
 .passwordContainer input {
   width: 100%;
-  padding-right: 40px;
+  padding-right: 48px;
 }
 
 .passwordToggle {
   position: absolute;
-  right: 10px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
   color: var(--text-secondary);
   cursor: pointer;
-  padding: 5px;
+  padding: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: var(--border-radius-sm);
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
 }
 
 .passwordToggle:hover {
-  color: var(--text-primary);
-  background-color: var(--background-main);
+  color: black;
+  background-color: var(--ig-hover-overlay);
+  transform: translateY(-50%) scale(1.1);
 }
 
 button.passwordToggle {
@@ -183,62 +240,102 @@ button.passwordToggle {
 
 .errorMessage {
   color: var(--error-color);
-  background-color: rgba(237, 73, 86, 0.1);
-  padding: var(--spacing-sm);
+  background-color: rgba(237, 73, 86, 0.08);
+  padding: var(--spacing-md);
   border-radius: var(--border-radius-sm);
   margin-bottom: var(--spacing-md);
   text-align: center;
-  border: 1px solid rgba(237, 73, 86, 0.2);
+  border: 1px solid rgba(237, 73, 86, 0.15);
+  font-weight: 500;
+  animation: ig-fade-in 0.3s ease-out;
+  font-size: var(--font-size-sm);
 }
 
-.primaryButton {
-  background: var(--ig-button-gradient);
-  color: var(--ig-white);
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-weight: 600;
-  border-radius: var(--border-radius-sm);
-  box-shadow: 0 2px 8px rgba(228, 64, 95, 0.3);
-}
-
-.primaryButton:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(228, 64, 95, 0.4);
-}
-
-.primaryButton:disabled {
-  background: var(--ig-grey);
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
+.fieldError {
+  color: var(--error-color);
+  font-size: var(--font-size-xs);
+  margin-top: var(--spacing-xs);
+  display: block;
+  font-weight: 500;
 }
 
 .avatarLabel {
   display: block;
-  margin-bottom: 8px;
-  font-size: 0.9rem;
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-sm);
   color: var(--text-secondary);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .fileInput {
   width: 100%;
-  padding: 8px;
-  border: 1px solid var(--border-color);
+  padding: var(--spacing-md);
+  border: 1px dashed var(--border-color);
   border-radius: var(--border-radius-sm);
+  background-color: #FAFAFA;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.fileInput:hover {
+  background-color: var(--background-card);
+  border-color: var(--ig-blue);
+  border-style: solid;
 }
 
 .avatarPreview {
-  margin-top: 10px;
+  margin-top: var(--spacing-md);
   text-align: center;
+  animation: ig-scale-in 0.3s ease-out;
 }
 
 .previewImage {
-  max-width: 150px;
-  max-height: 150px;
+  max-width: 120px;
+  max-height: 120px;
   border-radius: var(--border-radius-full);
   object-fit: cover;
-  border: 3px solid var(--ig-white);
+  border: 4px solid transparent;
+  background: var(--ig-gradient-story);
+  padding: 4px;
   box-shadow: var(--box-shadow);
+  transition: transform var(--transition-fast);
+}
+
+.previewImage:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .authContainer {
+    padding: var(--spacing-md);
+  }
+
+  .authCard {
+    padding: var(--spacing-xl);
+    max-width: 100%;
+  }
+
+  h1.brandName {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .authContainer {
+    padding: var(--spacing-sm);
+  }
+
+  .authCard {
+    padding: var(--spacing-lg);
+  }
+
+  h1.brandName {
+    font-size: 2.5rem;
+  }
+
+  .nameGroup {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
 }

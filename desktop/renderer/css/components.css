@@ -1,6 +1,6 @@
-/* Components CSS - UI component styles */
+/* Instagram-inspired Desktop App - Components CSS */
 
-/* Toast Notification System */
+/* Toast Notification System - Instagram style */
 .toast-container {
     position: fixed;
     top: 20px;
@@ -17,13 +17,14 @@
     align-items: center;
     gap: var(--spacing-sm);
     padding: var(--spacing-md);
-    border-radius: var(--border-radius-lg);
+    border-radius: var(--border-radius);
     box-shadow: var(--box-shadow-lg);
     background-color: var(--background-card);
     border-left: 4px solid;
     animation: toastSlideIn 0.3s ease;
     transition: var(--transition-normal);
     backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
 }
 
 .toast.removing {
@@ -32,18 +33,26 @@
 
 .toast-success {
     border-left-color: var(--success-color);
+    background: linear-gradient(135deg, rgba(0, 200, 81, 0.95) 0%, rgba(0, 200, 81, 0.9) 100%);
+    color: white;
 }
 
 .toast-error {
     border-left-color: var(--error-color);
+    background: linear-gradient(135deg, rgba(237, 73, 86, 0.95) 0%, rgba(237, 73, 86, 0.9) 100%);
+    color: white;
 }
 
 .toast-warning {
     border-left-color: var(--warning-color);
+    background: linear-gradient(135deg, rgba(255, 220, 0, 0.95) 0%, rgba(255, 220, 0, 0.9) 100%);
+    color: var(--text-primary);
 }
 
 .toast-info {
     border-left-color: var(--primary-color);
+    background: linear-gradient(135deg, rgba(0, 149, 246, 0.95) 0%, rgba(0, 149, 246, 0.9) 100%);
+    color: white;
 }
 
 .toast-icon {
@@ -55,27 +64,11 @@
     justify-content: center;
 }
 
-.toast-success .toast-icon {
-    color: var(--success-color);
-}
-
-.toast-error .toast-icon {
-    color: var(--error-color);
-}
-
-.toast-warning .toast-icon {
-    color: var(--warning-color);
-}
-
-.toast-info .toast-icon {
-    color: var(--primary-color);
-}
-
 .toast-message {
     flex: 1;
     font-size: var(--font-size-sm);
-    color: var(--text-primary);
     font-weight: 500;
+    line-height: 1.4;
 }
 
 .toast-close {
@@ -84,13 +77,19 @@
     cursor: pointer;
     padding: var(--spacing-xs);
     border-radius: var(--border-radius-sm);
-    color: var(--text-secondary);
+    color: inherit;
     transition: var(--transition-fast);
+    opacity: 0.8;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .toast-close:hover {
-    background-color: var(--background-hover);
-    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.2);
+    opacity: 1;
     transform: scale(1.1);
 }
 
@@ -99,7 +98,6 @@
         opacity: 0;
         transform: translateX(100%);
     }
-
     to {
         opacity: 1;
         transform: translateX(0);
@@ -111,14 +109,13 @@
         opacity: 1;
         transform: translateX(0);
     }
-
     to {
         opacity: 0;
         transform: translateX(100%);
     }
 }
 
-/* Messenger Header */
+/* Instagram-style Messenger Header */
 .messenger-header {
     display: flex;
     align-items: center;
@@ -130,12 +127,13 @@
     z-index: 100;
     backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.08);
 }
 
 .header-left .brand-name {
     font-family: var(--font-brand);
     font-size: var(--font-size-xl);
-    font-weight: 700;
+    font-weight: 800;
     background: var(--ig-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -149,22 +147,6 @@
     max-width: 600px;
     margin: 0 var(--spacing-lg);
 }
-
-.search-container {
-    position: relative;
-    width: 100%;
-}
-
-
-
-/* .search-icon {
-    position: absolute;
-    left: var(--spacing-md);
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-secondary);
-    pointer-events: none;
-} */
 
 .header-right {
     display: flex;
@@ -180,8 +162,8 @@
     border-radius: var(--border-radius-full);
     color: var(--text-secondary);
     transition: var(--transition-fast);
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -193,14 +175,14 @@
     transform: scale(1.05);
 }
 
-/* Messenger Content Layout */
+/* Instagram-style Messenger Content Layout */
 .messenger-content {
     display: flex;
     height: calc(100vh - 60px);
     overflow: hidden;
 }
 
-/* Conversations Sidebar */
+/* Instagram-style Conversations Sidebar */
 .conversations-sidebar {
     width: var(--sidebar-width);
     background-color: var(--background-card);
@@ -223,6 +205,7 @@
     font-weight: 600;
     color: var(--text-primary);
     margin: 0;
+    letter-spacing: -0.02em;
 }
 
 .conversations-sidebar .search-container {
@@ -233,10 +216,18 @@
 .search-input {
     width: 100%;
     padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--border-radius-lg);
+    border-radius: var(--border-radius-full);
     border: 1px solid var(--border-color);
-    background-color: var(--background-hover);
+    background-color: #F8F9FA;
     font-size: var(--font-size-sm);
+    transition: all var(--transition-fast);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(0, 149, 246, 0.2);
+    background-color: var(--background-card);
 }
 
 .conversations-list {
@@ -244,7 +235,7 @@
     overflow-y: auto;
 }
 
-/* Conversation Item */
+/* Instagram-style Conversation Item */
 .conversation-item {
     display: flex;
     align-items: center;
@@ -261,6 +252,7 @@
 
 .conversation-item.selected {
     background-color: var(--background-selected);
+    border-right: 3px solid var(--primary-color);
 }
 
 .conversation-item.unread {
@@ -274,6 +266,9 @@
 .conversation-item .avatar {
     width: 48px;
     height: 48px;
+    border: 2px solid transparent;
+    background: var(--ig-gradient);
+    padding: 2px;
 }
 
 .preview-content {
@@ -284,25 +279,27 @@
 
 .preview-content h4 {
     margin: 0 0 4px 0;
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-sm);
     font-weight: 600;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    letter-spacing: -0.01em;
 }
 
 .preview-content .bold-name {
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .message-preview,
 .bold-preview {
     margin: 4px 0 0;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
     color: var(--text-secondary);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 1.3;
 }
 
 .bold-preview {
@@ -321,6 +318,7 @@
 .timestamp {
     font-size: var(--font-size-xs);
     color: var(--text-muted);
+    font-weight: 400;
 }
 
 .bold-timestamp {
@@ -332,16 +330,17 @@
     background-color: var(--primary-color);
     color: var(--text-white);
     border-radius: var(--border-radius-full);
-    min-width: 20px;
-    height: 20px;
+    min-width: 18px;
+    height: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: var(--font-size-xs);
-    font-weight: 600;
+    font-weight: 700;
+    box-shadow: var(--box-shadow);
 }
 
-/* Chat Area */
+/* Instagram-style Chat Area */
 .chat-area {
     flex: 1;
     display: flex;
@@ -354,7 +353,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--background-hover);
+    background-color: #FAFAFA;
 }
 
 .no-chat-content {
@@ -372,13 +371,16 @@
     margin-bottom: var(--spacing-sm);
     color: var(--text-primary);
     font-weight: 600;
+    font-size: var(--font-size-lg);
+    letter-spacing: -0.02em;
 }
 
 .no-chat-content p {
     color: var(--text-secondary);
+    font-size: var(--font-size-sm);
 }
 
-/* Active Chat */
+/* Instagram-style Active Chat */
 .active-chat {
     flex: 1;
     display: flex;
@@ -386,7 +388,7 @@
     overflow: hidden;
 }
 
-/* Chat Header */
+/* Instagram-style Chat Header */
 .chat-header {
     display: flex;
     align-items: center;
@@ -428,14 +430,19 @@
 }
 
 .chat-header .avatar {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
+    border: 2px solid transparent;
+    background: var(--ig-gradient);
+    padding: 2px;
 }
 
 .user-details h2 {
     margin: 0;
     font-size: var(--font-size-md);
     font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
 }
 
 .user-status {
@@ -444,11 +451,11 @@
     font-weight: 500;
 }
 
-/* Messages Area */
+/* Instagram-style Messages Area */
 .messages-list {
     flex: 1;
     overflow-y: auto;
-    background-color: var(--background-hover);
+    background-color: #FAFAFA;
     padding: var(--spacing-md);
 }
 
@@ -458,7 +465,7 @@
     gap: var(--spacing-sm);
 }
 
-/* Message Item */
+/* Instagram-style Message Item */
 .message-item {
     display: flex;
     margin-bottom: var(--spacing-sm);
@@ -475,11 +482,15 @@
 }
 
 .message-avatar {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border-radius: var(--border-radius-full);
     margin: 0 var(--spacing-sm);
     align-self: flex-end;
+    object-fit: cover;
+    border: 2px solid transparent;
+    background: var(--ig-gradient);
+    padding: 1px;
 }
 
 .message-content {
@@ -489,22 +500,23 @@
 
 .message-text {
     padding: 10px 14px;
-    border-radius: var(--border-radius-lg);
+    border-radius: 18px;
     font-size: var(--font-size-sm);
     word-break: break-word;
     line-height: 1.4;
+    font-weight: 400;
 }
 
 .sent .message-text {
     background: var(--ig-gradient);
     color: var(--text-white);
-    border-top-right-radius: var(--border-radius-sm);
+    border-bottom-right-radius: var(--border-radius-sm);
 }
 
 .received .message-text {
     background-color: var(--background-card);
     color: var(--text-primary);
-    border-top-left-radius: var(--border-radius-sm);
+    border-bottom-left-radius: var(--border-radius-sm);
     border: 1px solid var(--border-color);
 }
 
@@ -514,6 +526,7 @@
     margin-top: 4px;
     display: flex;
     align-items: center;
+    font-weight: 400;
 }
 
 .sent .message-time {
@@ -522,9 +535,10 @@
 
 .read-status {
     margin-left: 4px;
+    color: var(--text-muted);
 }
 
-/* Typing Indicator */
+/* Instagram-style Typing Indicator */
 .typing-indicator {
     display: none;
     padding: var(--spacing-sm) var(--spacing-md);
@@ -541,8 +555,8 @@
 }
 
 .typing-dot {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     background-color: var(--text-muted);
     border-radius: var(--border-radius-full);
     animation: typingAnimation 1.5s infinite ease-in-out;
@@ -563,18 +577,19 @@
 @keyframes typingAnimation {
     0% {
         transform: translateY(0);
+        opacity: 0.7;
     }
-
     50% {
-        transform: translateY(-5px);
+        transform: translateY(-4px);
+        opacity: 1;
     }
-
     100% {
         transform: translateY(0);
+        opacity: 0.7;
     }
 }
 
-/* Message Input Form */
+/* Instagram-style Message Input Form */
 .message-input-form {
     display: flex;
     align-items: center;
@@ -592,11 +607,13 @@
     font-size: var(--font-size-lg);
     border-radius: var(--border-radius-full);
     transition: var(--transition-fast);
+    color: var(--text-secondary);
 }
 
 .emoji-button:hover {
     background-color: var(--background-hover);
     transform: scale(1.1);
+    color: var(--text-primary);
 }
 
 .message-input {
@@ -604,16 +621,25 @@
     padding: var(--spacing-sm) var(--spacing-md);
     border-radius: var(--border-radius-lg);
     border: 1px solid var(--border-color);
-    background-color: var(--background-hover);
+    background-color: #F8F9FA;
     font-size: var(--font-size-md);
     resize: none;
     max-height: 100px;
+    font-family: inherit;
+    transition: var(--transition-fast);
+    font-weight: 400;
 }
 
 .message-input:focus {
     background-color: var(--background-card);
     border-color: var(--secondary-color);
     box-shadow: 0 0 0 2px rgba(0, 149, 246, 0.2);
+    outline: none;
+}
+
+.message-input::placeholder {
+    color: var(--text-secondary);
+    font-weight: 400;
 }
 
 .send-button {
@@ -624,8 +650,8 @@
     color: var(--secondary-color);
     border-radius: var(--border-radius-full);
     transition: var(--transition-fast);
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -641,7 +667,7 @@
     cursor: not-allowed;
 }
 
-/* Emoji Picker */
+/* Instagram-style Emoji Picker */
 .emoji-picker {
     position: absolute;
     bottom: 80px;
@@ -654,6 +680,7 @@
     overflow: hidden;
     z-index: 1000;
     border: 1px solid var(--border-color);
+    animation: modalSlideIn 0.2s ease;
 }
 
 .emoji-picker-header {
@@ -669,6 +696,7 @@
     margin: 0;
     font-size: var(--font-size-sm);
     font-weight: 600;
+    color: var(--text-primary);
 }
 
 .close-emoji-picker {
@@ -684,6 +712,7 @@
 .close-emoji-picker:hover {
     background-color: var(--background-hover);
     transform: scale(1.1);
+    color: var(--text-primary);
 }
 
 .category-tabs {
@@ -710,6 +739,11 @@
     color: var(--text-primary);
 }
 
+.category-tab.active {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
 .emoji-grid {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
@@ -723,7 +757,7 @@
     background: none;
     border: none;
     padding: var(--spacing-sm);
-    font-size: 20px;
+    font-size: 18px;
     cursor: pointer;
     border-radius: var(--border-radius-sm);
     transition: var(--transition-fast);
@@ -735,7 +769,7 @@
     transform: scale(1.2);
 }
 
-/* Contact Components */
+/* Instagram-style Contact Components */
 .contact-item {
     display: flex;
     align-items: center;
@@ -757,8 +791,11 @@
 }
 
 .contact-avatar .avatar {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
+    border: 2px solid transparent;
+    background: var(--ig-gradient);
+    padding: 1px;
 }
 
 .status-dot {
@@ -783,6 +820,7 @@
     margin: 0;
     font-size: var(--font-size-sm);
     font-weight: 600;
+    color: var(--text-primary);
 }
 
 .contact-info p {
@@ -791,7 +829,7 @@
     color: var(--text-secondary);
 }
 
-/* Search Components */
+/* Instagram-style Search Components */
 .search-people {
     width: 100%;
     padding: var(--spacing-sm) var(--spacing-md);
@@ -799,6 +837,15 @@
     border: 1px solid var(--border-color);
     margin-bottom: var(--spacing-md);
     font-size: var(--font-size-md);
+    background-color: #F8F9FA;
+    transition: var(--transition-fast);
+}
+
+.search-people:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(0, 149, 246, 0.2);
+    background-color: var(--background-card);
 }
 
 .suggested-people {
@@ -822,7 +869,7 @@
     animation: spin 1s linear infinite;
 }
 
-/* Loading States */
+/* Instagram-style Loading States */
 .loading-conversations {
     display: flex;
     flex-direction: column;
@@ -839,10 +886,13 @@
 }
 
 .search-icon-container {
+    position: absolute;
     right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-/* Password Container */
+/* Instagram-style Password Container */
 .password-container {
     position: relative;
     width: 100%;
@@ -878,6 +928,10 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    :root {
+        --sidebar-width: 100%;
+    }
+
     .messenger-header {
         padding: var(--spacing-sm);
     }
@@ -942,12 +996,11 @@
     }
 
     .chat-header .avatar {
-        width: 36px;
-        height: 36px;
+        width: 32px;
+        height: 32px;
     }
 
     .message-input {
-        font-size: 16px;
-        /* Prevents zoom on iOS */
+        font-size: 16px; /* Prevents zoom on iOS */
     }
 }
