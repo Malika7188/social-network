@@ -14,6 +14,7 @@
   width: 100%;
   min-width: 0;
   margin-bottom: var(--spacing-lg);
+  padding-top: 100px; /* Adjusted for header height */
 }
 
 /* Instagram-style Groups Header */
@@ -227,7 +228,7 @@
 }
 
 .inviteBtn {
-  background-color: #F8F9FA;
+  background-color: #23b145;
   color: var(--text-primary);
   display: flex;
   align-items: center;
