@@ -21,6 +21,7 @@
   width: 100%;
   min-width: 0;
   margin-bottom: var(--spacing-lg);
+  padding-top: 100px;
 }
 
 /* Instagram-style Tabs */
